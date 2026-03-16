@@ -107,5 +107,5 @@
 }
 
 body {
-  @use font-sans;
+  @apply font-sans bg-(--bg-root);
 }
