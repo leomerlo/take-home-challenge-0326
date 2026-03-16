@@ -15,7 +15,7 @@ import AppButton from './components/global/AppButton';
 import AppConfidenceBar from './components/global/AppConfidenceBar';
 import AppDashboardCard from './components/global/AppDashboardCard';
 import AppTags from './components/global/AppTags';
-import { Shield } from 'lucide-react';
+import { Download, Plus, Shield } from 'lucide-react';
 
 function App() {
   return (
@@ -37,6 +37,12 @@ function App() {
         </AppButton>
         <AppButton size="small" onClick={() => {}}>
           Small
+        </AppButton>
+        <AppButton variant="secondary" icon={<Download size={14} />} iconPosition="left" onClick={() => {}}>
+          Export
+        </AppButton>
+        <AppButton variant="primary" icon={<Plus size={14} />} iconPosition="right" onClick={() => {}}>
+          Add
         </AppButton>
       </div>
       <div className="flex flex-wrap gap-4 items-center">

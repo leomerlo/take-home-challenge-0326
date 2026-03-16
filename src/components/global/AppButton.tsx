@@ -2,18 +2,19 @@ import React, { useMemo } from 'react'
 
 export type AppButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
 export type AppButtonSize = 'small' | 'medium'
+export type AppButtonIconPosition = 'left' | 'right'
 
-type Props = {
+const AppButton = (props: {
     children: React.ReactNode
     onClick: () => void
     disabled?: boolean
     variant?: AppButtonVariant
     size?: AppButtonSize
     className?: string
-}
-
-const AppButton = (props: Props) => {
-    const { children, onClick, disabled, variant = 'primary', size = 'medium', className = '' } = props
+    iconPosition?: AppButtonIconPosition
+    icon?: React.ReactNode
+}) => {
+    const { children, onClick, disabled, variant = 'primary', size = 'medium', className = '', iconPosition = 'left', icon } = props
 
     /**
      * Generate the variant classes based on the variant prop
@@ -24,16 +25,16 @@ const AppButton = (props: Props) => {
         switch (variant) {
             case 'primary':
             default:
-                return 'bg-[var(--augur-blue)] text-white border-1 border-[var(--augur-blue)]'
+                return 'bg-[var(--augur-blue)] text-white border-1 border-[var(--augur-blue)] hover:brightness-[1.15]'
 
             case 'secondary':
-                return 'bg-transparent text-[var(--text-primary)] border-1 border-[var(--border-default)]'
+                return 'bg-transparent text-[var(--text-primary)] border-1 border-[var(--border-default)] hover:bg-(--bg-card) hover:border-(--border-hover)'
 
             case 'ghost':
-                return 'bg-transparent text-[var(--text-secondary)] px-[10px]! py-[6px]! border-none!'
+                return 'bg-transparent text-[var(--text-secondary)] px-[10px]! py-[6px]! border-none! hover:bg-(--bg-card) hover:text-(--text-primary)'
 
             case 'danger':
-                return 'bg-[var(--severity-critical-bg)] text-[var(--severity-critical)] border-1 border-[var(--severity-critical-border)]'
+                return 'bg-[var(--severity-critical-bg)] text-[var(--severity-critical)] border-1 border-[var(--severity-critical-border)] hover:brightness-[1.5]'
         }
     }, [variant])
     
@@ -53,11 +54,13 @@ const AppButton = (props: Props) => {
 
     return (
         <button
-            className={`inline-flex items-center justify-center gap-2 px-[14px] py-[7px] rounded-md border hover:filter-brightness-110 font-sans text-md cursor-pointer whitespace-nowrap leading-tight ${variantClass} ${sizeClass} ${className}`}
+            className={`inline-flex items-center justify-center gap-2 px-[14px] py-[7px] rounded-md border font-sans text-md cursor-pointer whitespace-nowrap leading-tight ${variantClass} ${sizeClass} ${className}`}
             onClick={onClick}
             disabled={disabled}
         >
+            {icon && iconPosition === 'left' && <div className="flex items-center justify-center w-4 h-4">{icon}</div>}
             {children}
+            {icon && iconPosition === 'right' && <div className="flex items-center justify-center w-4 h-4">{icon}</div>}
         </button>
   )
 }
