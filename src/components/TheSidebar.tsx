@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ChartNoAxesColumn, File, Globe, Layers, LayoutGrid, Menu, Search, Shield, Users, X } from 'lucide-react'
@@ -114,7 +114,7 @@ const TheSidebar = () => {
     }, [t, i18n.language])
 
     return (
-        <Fragment>
+        <>
             <button
                 onClick={() => setIsOpen(true)}
                 className="lg:hidden absolute top-2 right-2 p-(--sp-3) rounded-md hover:bg-(--bg-card) hover:text-(--text-primary) cursor-pointer"
@@ -138,7 +138,7 @@ const TheSidebar = () => {
                 >
                     <X size={20} className="text-white" />
                 </button>
-                <nav className="flex-col gap-(--sp-2) flex border-r border-(--border-subtle) py-(--sp-5)">
+                <nav className="flex-col gap-(--sp-2) flex border-r border-(--border-subtle)">
                     <div className="flex items-center gap-(--sp-3) px-(--sp-5) pb-(--sp-4)">
                         <svg className="w-7 h-7" viewBox="0 0 28 28" fill="none"><path d="M14 2L2 26h24L14 2z" stroke="#fff" strokeWidth="2" fill="none"></path><path d="M14 10l-5 10h10l-5-10z" fill="#6383ff" opacity="0.3"></path></svg>
                         <span className="text-(--augur-logo) [font-family:var(--font-display)] text-[18px] tracking-[3px] leading-none uppercase font-bold">Augur</span>
@@ -146,7 +146,7 @@ const TheSidebar = () => {
                     {sidebarItems}
                 </nav>
             </aside>
-        </Fragment>
+        </>
     )
 }
 

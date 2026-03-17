@@ -116,4 +116,5 @@ The project includes Vitest + React Testing Library. Write tests for your key co
 
 ### Candidate Notes
 
-_Add your design decisions, trade-offs, and anything you'd like to highlight here._
+In case the current design system is using CSS vars, I opted out of moving the values into tailwind's theme and used the vars with tailwinds.
+I used TanStack Query for data fetching to bring this assignment closer to a production-ready implementation, with caching and robust loading/error handling.

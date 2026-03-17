@@ -14,5 +14,24 @@
         "integrations": "Integrations",
         "notifications_one": "You have 1 notification",
         "notifications_other": "You have {{count}} notifications"
+    },
+    "dashboard": {
+        "stats": {
+            "total_indicators": "Total Indicators",
+            "critical": "Critical",
+            "high": "High",
+            "medium": "Medium",
+            "low": "Low",
+            "critical_description": "Requires immediate action",
+            "total_indicators_description": "{{ percentage}}% from last month",
+            "medium_description": "Under review",
+            "high_description": "Active monitoring",
+            "low_description": "Informational",
+            "error": "There is no data available."
+        }
+    },
+    "global": {
+        "error": "Error",
+        "retry": "Try again"
     }
 }
