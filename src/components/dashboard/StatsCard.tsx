@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react'
 
-export type DashboardCardVariant = 'total' | 'critical' | 'high' | 'medium' | 'low'
+export type StatsCard = 'total' | 'critical' | 'high' | 'medium' | 'low'
 
 type Props = {
-    variant: DashboardCardVariant
+    variant: StatsCard
     title: string
     icon?: React.ReactNode
     loading?: boolean
@@ -11,7 +11,7 @@ type Props = {
     value: number
 }
 
-const DashboardCard = (props: Props) => {
+const StatsCard = (props: Props) => {
     const { variant, title, description, icon, value, loading } = props
 
     if (loading) {
@@ -37,9 +37,16 @@ const DashboardCard = (props: Props) => {
     const valueClass = useMemo((): string => {
         switch (variant) {
             case 'total':
-                return 'text-(--text-primary)'
             default:
-                return `text-(--severity-${variant})`
+                return 'text-(--text-primary)'
+            case 'critical':
+                return 'text-(--severity-critical)'
+            case 'high':
+                return 'text-(--severity-high)'
+            case 'medium':
+                return 'text-(--severity-medium)'
+            case 'low':
+                return 'text-(--severity-low)'
         }
     }, [variant])
 
@@ -59,4 +66,4 @@ const DashboardCard = (props: Props) => {
     )
 }
 
-export default DashboardCard
+export default StatsCard

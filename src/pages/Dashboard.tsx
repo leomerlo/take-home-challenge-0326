@@ -1,6 +1,6 @@
 import AppButton from '@/components/global/AppButton';
 import DashboardStats from '@/components/dashboard/DashboardStats';
-import DashboardDataTable from '@/components/dashboard/DashboardDataTable';
+import DashboardIndicators from '@/components/dashboard/DashboardIndicators';
 import { ArrowBigDown, Plus } from 'lucide-react';
 
 const Dashboard = () => {
@@ -34,6 +34,9 @@ const Dashboard = () => {
       <div className="flex-1 w-full overflow-y-auto">
         <div className="py-(--sp-5) px-(--sp-8)" id="dashboard-stats">
           <DashboardStats />
+        </div>
+        <div>
+          <DashboardIndicators />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import DashboardCard from '@/components/dashboard/DashboardCard';
+import StatsCard from '@/components/dashboard/StatsCard';
 import { ArrowUp, Shield } from 'lucide-react';
 import { useStats } from '@/hooks/useStats';
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,7 @@ const DashboardStats = () => {
     return (
       <div className="grid grid-cols-5 gap-(--sp-4)">
         {Array.from({ length: 5 }).map((_, i) => (
-          <DashboardCard key={i} variant="total" title="" description="" value={0} loading={true} />
+          <StatsCard key={i} variant="total" title="" description="" value={0} loading={true} />
         ))}
       </div>
     )
@@ -41,7 +41,7 @@ const DashboardStats = () => {
   return (
     <>
         <div className="grid grid-cols-5 gap-(--sp-4)">
-            <DashboardCard
+            <StatsCard
                 variant="total"
                 title={t(`dashboard.stats.total_indicators`)}
                 icon={<Shield size={24} />}
@@ -53,10 +53,10 @@ const DashboardStats = () => {
                 }
                 value={data?.total ?? 0}
             />
-            <DashboardCard variant="critical" title={t(`dashboard.stats.critical`)} description={t(`dashboard.stats.critical_description`)} value={data?.critical ?? 0} />
-            <DashboardCard variant="high" title={t(`dashboard.stats.high`)} description={t(`dashboard.stats.high_description`)} value={data?.high ?? 0} />
-            <DashboardCard variant="medium" title={t(`dashboard.stats.medium`)} description={t(`dashboard.stats.medium_description`)} value={data?.medium ?? 0} />
-            <DashboardCard variant="low" title={t(`dashboard.stats.low`)} description={t(`dashboard.stats.low_description`)} value={data?.low ?? 0} />
+            <StatsCard variant="critical" title={t(`dashboard.stats.critical`)} description={t(`dashboard.stats.critical_description`)} value={data?.critical ?? 0} />
+            <StatsCard variant="high" title={t(`dashboard.stats.high`)} description={t(`dashboard.stats.high_description`)} value={data?.high ?? 0} />
+            <StatsCard variant="medium" title={t(`dashboard.stats.medium`)} description={t(`dashboard.stats.medium_description`)} value={data?.medium ?? 0} />
+            <StatsCard variant="low" title={t(`dashboard.stats.low`)} description={t(`dashboard.stats.low_description`)} value={data?.low ?? 0} />
         </div>
     </>
   )

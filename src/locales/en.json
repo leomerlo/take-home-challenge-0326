@@ -33,5 +33,31 @@
     "global": {
         "error": "Error",
         "retry": "Try again"
+    },
+    "indicators": {
+        "filters": {
+            "search": "Search indicators...",
+            "severity": {
+                "all": "All Severities",
+                "critical": "Critical",
+                "high": "High",
+                "medium": "Medium",
+                "low": "Low",
+                "label": "Filter by severity"
+            },
+            "type": {
+                "all": "All Types",
+                "ip": "IP Address",
+                "domain": "Domain",
+                "hash": "File Hash",
+                "url": "URL",
+                "label": "Filter by type"
+            },
+            "source": {
+                "all": "All Sources",
+                "label": "Filter by source"
+            },
+            "clear": "Clear filters"
+        }
     }
 }
