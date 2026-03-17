@@ -1,0 +1,18 @@
+{
+    "navigation": {
+        "dashboard": "Dashboard",
+        "augur-events": "Augur Events",
+        "investigate": "Investigate",
+        "intelligence": "Intelligence",
+        "threat-indicators": "Threat Indicators",
+        "campaigns": "Campaigns",
+        "actors": "Actors",
+        "reports": "Reports",
+        "executive-reports": "Executive Reports",
+        "analytics": "Analytics",
+        "settings": "Settings",
+        "integrations": "Integrations",
+        "notifications_one": "You have 1 notification",
+        "notifications_other": "You have {{count}} notifications"
+    }
+}

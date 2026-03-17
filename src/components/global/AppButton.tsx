@@ -7,6 +7,7 @@ export type AppButtonIconPosition = 'left' | 'right'
 const AppButton = (props: {
     children: React.ReactNode
     onClick: () => void
+    testId?: string
     disabled?: boolean
     variant?: AppButtonVariant
     size?: AppButtonSize
@@ -14,7 +15,7 @@ const AppButton = (props: {
     iconPosition?: AppButtonIconPosition
     icon?: React.ReactNode
 }) => {
-    const { children, onClick, disabled, variant = 'primary', size = 'medium', className = '', iconPosition = 'left', icon } = props
+    const { children, onClick, testId, disabled, variant = 'primary', size = 'medium', className = '', iconPosition = 'left', icon } = props
 
     /**
      * Generate the variant classes based on the variant prop
@@ -57,6 +58,7 @@ const AppButton = (props: {
             className={`inline-flex items-center justify-center gap-2 px-[14px] py-[7px] rounded-md border font-sans text-md cursor-pointer whitespace-nowrap leading-tight ${variantClass} ${sizeClass} ${className}`}
             onClick={onClick}
             disabled={disabled}
+            data-testid={testId}
         >
             {icon && iconPosition === 'left' && <div className="flex items-center justify-center w-4 h-4">{icon}</div>}
             {children}

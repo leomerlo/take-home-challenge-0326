@@ -4,7 +4,10 @@
 
 ## Overview
 
-Build a **Threat Intelligence Dashboard** that displays, filters, and explores threat indicators (malicious IPs, domains, file hashes, URLs). Your implementation should match the visual design provided in `design-reference.html` and consume data from the included mock API.
+**Threat Intelligence Dashboard** displays, filters, and explores threat indicators (malicious IPs, domains, file hashes, URLs).
+
+## See it in action
+Visit [link] to see it in action
 
 ## Quick Start
 
@@ -15,18 +18,7 @@ npm run dev
 
 This starts both the React dev server (`localhost:5173`) and the mock API (`localhost:3001`). The Vite dev server proxies `/api/*` requests to the API automatically.
 
-## Design Reference
-
-Open `design-reference.html` in your browser. This is your design spec — it includes:
-
-- **Full dashboard mockup** — sidebar, stats, table, detail panel, filters
-- **Complete color palette** — all CSS variables with hex values
-- **Typography** — DM Sans (UI) + JetBrains Mono (technical data)
-- **Component library** — badges, tags, buttons, confidence bars, inputs
-- **Layout dimensions** — sidebar, panel, header, modal sizes
-- **Interaction states** — hover, selected, focus, loading
-
-Use browser DevTools to inspect exact values. All design tokens are defined as CSS variables in `:root`.
+-----
 
 ## API Documentation
 
