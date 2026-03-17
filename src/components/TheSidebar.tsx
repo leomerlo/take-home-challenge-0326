@@ -92,14 +92,14 @@ const TheSidebar = () => {
         return SIDEBAR_ITEMS.map((group, groupIndex) => (
             <div key={groupIndex} data-testid={`sidebar-group-${group.label ? group.label : 'default'}`} className="flex flex-col gap-[2px]">
                 {group.label && (
-                    <div className="text-(--text-tertiary) uppercase text-[10px] tracking-[1.2px] px-(--sp-5) pt-(--sp-3) pb-(--sp-2) font-semibold">{t(`navigation.${group.label}`)}</div>
+                    <div className="text-(--text-tertiary) uppercase lg:text-[10px] tracking-[1.2px] px-(--sp-5) pt-(--sp-3) pb-(--sp-2) font-semibold">{t(`navigation.${group.label}`)}</div>
                 )}
                 {group.items.map((item) => (
                     <NavLink
                         key={item.href}
                         to={item.href}
                         data-testid={`sidebar-item-${item.label}`}
-                        className={({ isActive }) => `nav-item flex items-center gap-(--sp-3) rounded-md px-(--sp-5) py-(--sp-2) mx-(--sp-2) my-(1px) text-[13px] transition-all duration-150 ease hover:bg-(--bg-card) hover:text-(--text-primary) ${isActive ? 'bg-(--bg-sidebar-active) text-(--augur-blue)' : 'text-(--text-secondary)'}`}
+                        className={({ isActive }) => `nav-item flex items-center gap-(--sp-3) rounded-md px-(--sp-5) py-(--sp-4) lg:py-(--sp-2) mx-(--sp-2) my-(1px) lg:text-[13px] transition-all duration-150 ease hover:bg-(--bg-card) hover:text-(--text-primary) ${isActive ? 'bg-(--bg-sidebar-active) text-(--augur-blue)' : 'text-(--text-secondary)'}`}
                         end
                     >
                         <div className="nav-icon opacity-60">{item.icon}</div>
@@ -117,10 +117,10 @@ const TheSidebar = () => {
         <Fragment>
             <button
                 onClick={() => setIsOpen(true)}
-                className="lg:hidden absolute top-2 right-2 p-(--sp-2) rounded-md hover:bg-(--bg-card) hover:text-(--text-primary) cursor-pointer"
+                className="lg:hidden absolute top-2 right-2 p-(--sp-3) rounded-md hover:bg-(--bg-card) hover:text-(--text-primary) cursor-pointer"
                 data-testid="sidebar-toggle-open"
             >
-                <Menu size={18} className="text-white" />
+                <Menu size={20} className="text-white" />
             </button>
             <aside
                 className={`
@@ -128,16 +128,15 @@ const TheSidebar = () => {
                     lg:static lg:block lg:w-(--sidebar-width) lg:shrink-0 lg:h-screen
                     fixed inset-0 z-50 w-full h-full
                     transition-transform duration-200 ease-out
-                    lg:translate-x-0
                     ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
                 `}
                 >
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="lg:hidden absolute top-2 right-2 p-(--sp-2) rounded-md hover:bg-(--bg-card) hover:text-(--text-primary) cursor-pointer"
+                    className="lg:hidden absolute top-2 right-2 p-(--sp-3) rounded-md hover:bg-(--bg-card) hover:text-(--text-primary) cursor-pointer"
                     data-testid="sidebar-toggle-close"
                 >
-                    <X size={18} className="text-white" />
+                    <X size={20} className="text-white" />
                 </button>
                 <nav className="flex-col gap-(--sp-2) flex border-r border-(--border-subtle) py-(--sp-5)">
                     <div className="flex items-center gap-(--sp-3) px-(--sp-5) pb-(--sp-4)">
