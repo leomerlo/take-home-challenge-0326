@@ -27,7 +27,8 @@
             "medium_description": "Under review",
             "high_description": "Active monitoring",
             "low_description": "Informational",
-            "error": "There is no data available."
+            "error": "There was an issue fetching the stats, please try again.",
+            "empty": "There is no available data"
         }
     },
     "global": {
@@ -58,6 +59,52 @@
                 "label": "Filter by source"
             },
             "clear": "Clear filters"
+        },
+        "table": {
+            "headings": {
+                "value": "Indicators",
+                "type": "Type",
+                "severity": "Severity",
+                "confidence": "Confidence",
+                "source": "Source",
+                "tags": "Tags",
+                "lastSeen": "Last seen"
+            },
+            "type": {
+                "ip": "IP",
+                "domain": "Domain",
+                "hash": "Hash",
+                "url": "URL"
+            },
+            "severity": {
+                "critical": "Critical",
+                "high": "High",
+                "medium": "Medium",
+                "low": "Low"
+            },
+            "error": "There was an error fetching the indicators, please try again."
+        },
+        "details": {
+            "title": "Indicator Details",
+            "label": {
+                "value": "Value",
+                "classification": "Classification",
+                "confidence": "Confidence Score",
+                "tags": "Tags",
+                "timeline": "Timeline",
+                "firstSeen": "First Seen",
+                "lastSeen": "Last Seen",
+                "auguredOn": "Augured On",
+                "source": "Source",
+                "provider": "Provider",
+                "reports": "Reports",
+                "relatedCampaigns": "Related campaigns"
+            },
+            "button": {
+                "investigate": "Investigate",
+                "block": "Block"
+            },
+            "error": "There was an error fetching the indicator, please try again."
         }
     }
 }

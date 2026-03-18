@@ -45,7 +45,7 @@ const AppConfidenceBar = (props: Props) => {
 
     return (
         <div className="flex gap-2 items-center">
-            <div className={`w-full h-2 rounded-sm bg-(--bg-elevated)`}>
+            <div className={`w-full h-[4px] rounded-sm bg-(--bg-elevated)`}>
                 <div className={`h-full rounded-sm ${fillClass}`} style={{ width: `${confidence}%` }} aria-valuenow={confidence} aria-valuemin={0} aria-valuemax={100} role="progressbar"></div>
             </div>
             <span className={`text-[11px] font-bold ${textClass}`}>{confidence}</span>

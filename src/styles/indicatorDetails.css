@@ -1,0 +1,19 @@
+.detail-section {
+  @apply flex flex-col gap-(--sp-2);
+}
+
+.detail-section-header {
+  @apply uppercase text-[10px] text-(--text-tertiary);
+}
+
+.detail-row {
+  @apply flex justify-between items-center py-(--sp-2) border-b border-(--border-subtle);
+}
+
+.detail-row-label {
+  @apply text-[12px] text-(--text-secondary);
+}
+
+.detail-row-value {
+  @apply text-[12px] text-(--text-primary);
+}

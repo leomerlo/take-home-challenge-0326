@@ -19,6 +19,9 @@ export interface Indicator {
   lastSeen: string; // ISO 8601
   tags: string[];
   confidence: number; // 0–100
+  auguredOn: string; // ISO 8601
+  reports: number;
+  relatedCampaigns: RelatedCampaign[];
 }
 
 export interface PaginatedResponse<T> {
@@ -34,4 +37,9 @@ export interface IndicatorFilters {
   type?: IndicatorType;
   page?: number;
   limit?: number;
+}
+
+export interface RelatedCampaign {
+  name: string;
+  actor: string;
 }

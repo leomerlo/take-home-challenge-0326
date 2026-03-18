@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AppSelect from '@/components/global/AppSelect';
 import AppInput from '@/components/global/AppInput';
-import AppButton from '../global/AppButton';
+import AppButton from '../../global/AppButton';
 
 type Props = {
   filters: IndicatorFilters;
@@ -32,7 +32,7 @@ const IndicatorsDataFilters = (props: Props) => {
   };
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between border-b border-(--border-subtle) -mx-(--sp-8) px-(--sp-8) py-(--sp-4) bg-(--bg-surface)">
       <form className="flex gap-(--sp-3) items-center">
         <AppInput
           label={t('indicators.filters.search')}

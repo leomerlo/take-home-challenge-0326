@@ -20,10 +20,8 @@ const DashboardStats = () => {
 
   if (error) {
     return (
-        <div className="grid grid-cols-5 gap-(--sp-4)">
-          <div className="col-span-5 flex flex-col items-center justify-center py-(--sp-12) px-(--sp-8) rounded-lg bg-(--bg-card) border border-(--border-subtle)">
-            <AppError message={error?.message ?? ''} onRetry={() => false } />
-          </div>
+        <div className="w-full pt-(--sp-4)">
+          <AppError message={t('dashboard.stats.error')} onRetry={() => false } />
         </div>
       );
   }
@@ -32,7 +30,7 @@ const DashboardStats = () => {
     return (
       <div className="grid grid-cols-5 gap-(--sp-4)">
         <div className="col-span-5 flex flex-col items-center justify-center py-(--sp-12) px-(--sp-8) rounded-lg bg-(--bg-card) border border-(--border-subtle)">
-          <p className="text-(--text-secondary) text-[12px]">{t('dashboard.stats.error')}</p>
+          <p className="text-(--text-secondary) text-[12px]">{t('dashboard.stats.empty')}</p>
         </div>
       </div>
     )

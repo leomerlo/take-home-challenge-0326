@@ -80,6 +80,17 @@ const severityWeights = [
   { severity: 'low', weight: 0.20 },
 ];
 
+const relatedCampaigns = [
+  { name: 'F5 Attack Campaign', actor: 'UNC3886 • China' },
+  { name: 'SolarWinds Attack Campaign', actor: 'SolarWinds • United States' },
+  { name: 'Log4Shell Attack Campaign', actor: 'Log4Shell • United States' },
+  { name: 'ProxyShell Attack Campaign', actor: 'ProxyShell • United States' },
+  { name: 'TrickBot Attack Campaign', actor: 'TrickBot • Russia' },
+  { name: 'NotPetya Attack Campaign', actor: 'NotPetya • Ukraine' },
+  { name: 'WannaCry Attack Campaign', actor: 'WannaCry • United Kingdom' },
+  { name: 'Petya Attack Campaign', actor: 'Petya • Ukraine' },
+];
+
 function weightedSeverity() {
   const r = Math.random();
   let cumulative = 0;
@@ -127,6 +138,20 @@ function generateTags(type) {
   return [...tags];
 }
 
+function generateRelatedCampaigns() {
+  const count = randomInt(0, relatedCampaigns.length);
+  const result = [];
+  const indices = new Set();
+  while (result.length < count) {
+    const idx = Math.floor(Math.random() * relatedCampaigns.length);
+    if (!indices.has(idx)) {
+      indices.add(idx);
+      result.push(relatedCampaigns[idx]);
+    }
+  }
+  return result;
+}
+
 function confidenceForSeverity(severity) {
   switch (severity) {
     case 'critical': return randomInt(80, 99);
@@ -143,6 +168,7 @@ export function generateIndicators(count = 500) {
   for (let i = 0; i < count; i++) {
     const type = weightedType();
     const severity = weightedSeverity();
+    const auguredOn = randomDate(120);
     const firstSeen = randomDate(90);
     const lastSeen = randomDate(7);
 
@@ -156,6 +182,9 @@ export function generateIndicators(count = 500) {
       lastSeen,
       tags: generateTags(type),
       confidence: confidenceForSeverity(severity),
+      auguredOn,
+      reports: randomInt(1, 100),
+      relatedCampaigns: generateRelatedCampaigns(),
     });
   }
 

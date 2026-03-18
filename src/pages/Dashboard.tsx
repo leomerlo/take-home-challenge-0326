@@ -31,11 +31,11 @@ const Dashboard = () => {
           </AppButton>
         </div>
       </div>
-      <div className="flex-1 w-full overflow-y-auto">
-        <div className="py-(--sp-5) px-(--sp-8)" id="dashboard-stats">
+      <div className="flex flex-col flex-1 w-full overflow-y-auto">
+        <div className="py-(--sp-5) px-(--sp-8)" data-testid="dashboard-stats">
           <DashboardStats />
         </div>
-        <div>
+        <div className="flex-1 flex flex-col">
           <DashboardIndicators />
         </div>
       </div>
