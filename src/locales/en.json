@@ -33,7 +33,11 @@
     },
     "global": {
         "error": "Error",
-        "retry": "Try again"
+        "retry": "Try again",
+        "pagination": {
+            "total": "Showing {{initial}}-{{end}} of {{total}} {{elements}}"
+        },
+        "indicators": "indicators"
     },
     "indicators": {
         "filters": {

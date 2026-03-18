@@ -1,4 +1,4 @@
-const ROWS = 8;
+const ROWS = 10;
 
 const IndicatorsDataTableSkeleton = () => {
   return (

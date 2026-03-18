@@ -4,10 +4,12 @@ import IndicatorsDataFilters from '@/components/dashboard/indicators/IndicatorsD
 import IndicatorsDataTable from '@/components/dashboard/indicators/IndicatorsDataTable';
 import IndicatorDetails from '@/components/dashboard/indicators/IndicatorDetails';
 import { useState } from 'react';
-import AppError from '../global/AppError';
+import { useTranslation } from 'react-i18next';
+import AppPagination from '../global/AppPagination';
 
 
 const DashboardIndicators = () => {
+  const { t } = useTranslation();
   const [filters, setFilters] = useState<IndicatorFilters>({
     page: 1,
     limit: 10,
@@ -15,7 +17,7 @@ const DashboardIndicators = () => {
     type: undefined,
     search: '',
   });
-  const { data, loading, error } = useIndicators(filters);
+  const { data, total, page, loading, error } = useIndicators(filters);
   const [selectedIndicator, setSelectedIndicator] = useState<Indicator | null>(null);
   
   return (
@@ -26,6 +28,15 @@ const DashboardIndicators = () => {
       <div className="flex flex-1">
         <div className="px-(--sp-8) py-(--sp-4) flex-1">
           <IndicatorsDataTable data={data} loading={loading} error={error} onRowClick={setSelectedIndicator} />
+          <AppPagination
+            total={total}
+            page={page}
+            limit={filters.limit ?? 10}
+            elements={t('global.indicators')}
+            onPageChange={(page) => {
+              setFilters({ ...filters, page });
+            }}
+          />
         </div>
         <IndicatorDetails indicatorId={selectedIndicator?.id ?? null} onClose={() => setSelectedIndicator(null)} />
       </div>
