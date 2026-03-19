@@ -23,7 +23,7 @@
             "medium": "Medium",
             "low": "Low",
             "critical_description": "Requires immediate action",
-            "total_indicators_description": "{{ percentage}}% from last month",
+            "total_indicators_description": "{{percentage}}% from last week",
             "medium_description": "Under review",
             "high_description": "Active monitoring",
             "low_description": "Informational",

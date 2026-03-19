@@ -6,7 +6,7 @@ export type AppButtonIconPosition = 'left' | 'right'
 
 const AppButton = (props: {
     children: React.ReactNode
-    onClick: () => void
+    onClick?: () => void
     testId?: string
     disabled?: boolean
     variant?: AppButtonVariant

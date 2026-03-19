@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react'
 
-export type StatsCard = 'total' | 'critical' | 'high' | 'medium' | 'low'
+export type StatsCardVariant = 'total' | 'critical' | 'high' | 'medium' | 'low'
 
 type Props = {
-    variant: StatsCard
+    variant: StatsCardVariant
     title: string
     icon?: React.ReactNode
     loading?: boolean

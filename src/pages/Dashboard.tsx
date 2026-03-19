@@ -17,7 +17,6 @@ const Dashboard = () => {
             size="small"
             iconPosition="left"
             icon={<ArrowBigDown size={16} />}
-            onClick={() => false }
           >
             Export
           </AppButton>
@@ -25,7 +24,6 @@ const Dashboard = () => {
             variant="primary"
             size="small"
             icon={<Plus size={16} />}
-            onClick={() => false }
           >
             Add Indicator
           </AppButton>
