@@ -120,9 +120,10 @@ const TheSidebar = () => {
                 className="lg:hidden absolute top-2 right-2 p-(--sp-3) rounded-md hover:bg-(--bg-card) hover:text-(--text-primary) cursor-pointer"
                 data-testid="sidebar-toggle-open"
             >
-                <Menu size={20} className="text-white" />
+                <Menu size={20} className="text-white" aria-label={t('navigation.open')} />
             </button>
             <aside
+                aria-hidden={!isOpen}
                 className={`
                     flex flex-col bg-(--bg-sidebar) border-r border-(--border-subtle) py-(--sp-5) overflow-y-auto
                     lg:static lg:block lg:w-(--sidebar-width) lg:shrink-0 lg:h-screen
@@ -135,6 +136,7 @@ const TheSidebar = () => {
                     onClick={() => setIsOpen(false)}
                     className="lg:hidden absolute top-2 right-2 p-(--sp-3) rounded-md hover:bg-(--bg-card) hover:text-(--text-primary) cursor-pointer"
                     data-testid="sidebar-toggle-close"
+                    aria-label={t('navigation.close')}
                 >
                     <X size={20} className="text-white" />
                 </button>
