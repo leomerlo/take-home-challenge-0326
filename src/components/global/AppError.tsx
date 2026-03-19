@@ -1,5 +1,4 @@
-import AppButton from '@/components/global/AppButton'
-import { AlertCircle, RefreshCcw } from 'lucide-react'
+import { AlertCircle } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 type Props = {

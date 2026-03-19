@@ -1,11 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Indicator } from '@/types/indicator';
-
-async function fetchIndicator(id: string): Promise<Indicator> {
-  const res = await fetch(`/api/indicators/${id}`);
-  if (!res.ok) throw new Error('Failed to fetch indicator');
-  return res.json();
-}
+import { fetchIndicator } from '@/services/indicators';
 
 export function useIndicator(id: string) {
   const query = useQuery({

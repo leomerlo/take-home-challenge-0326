@@ -9,7 +9,6 @@ import { formatTimeAgo } from '@/helpers/dateHelpers';
 import { TAG_VARIANTS, TYPE_ICONS } from '@/helpers/indicatorHelpers';
 import IndicatorsDataTableSkeleton from '@/components/dashboard/indicators/IndicatorsDataTableSkeleton';
 import AppError from '@/components/global/AppError';
-import AppPagination from '@/components/global/AppPagination';
 
 type Props = {
   data: Indicator[] | undefined;

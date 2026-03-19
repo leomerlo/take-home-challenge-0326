@@ -1,11 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import type { Stats } from '@/types/stats';
-
-async function fetchStats(): Promise<Stats> {
-  const res = await fetch('/api/stats');
-  if (!res.ok) throw new Error('Failed to fetch stats');
-  return res.json();
-}
+import { fetchStats } from '@/services/stats';
 
 export function useStats() {
   const query = useQuery({
