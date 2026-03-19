@@ -1,0 +1,130 @@
+{
+    "not_found": {
+        "description": "Página no encontrada"
+    },
+    "navigation": {
+        "dashboard": "Panel de control",
+        "augur-events": "Eventos de Augur",
+        "investigate": "Investigar",
+        "intelligence": "Inteligencia",
+        "threat-indicators": "Indicadores de amenazas",
+        "campaigns": "Campañas",
+        "actors": "Actores",
+        "reports": "Informes",
+        "executive-reports": "Informes ejecutivos",
+        "analytics": "Análisis",
+        "settings": "Configuración",
+        "integrations": "Integraciones",
+        "notifications_one": "Tienes 1 notificación",
+        "notifications_other": "Tienes {{count}} notificaciones",
+        "open": "Abrir menú",
+        "close": "Cerrar menú",
+        "menu": "Menú de navegación"
+    },
+    "dashboard": {
+        "stats": {
+            "total_indicators": "Indicadores totales",
+            "critical": "Crítico",
+            "high": "Alto",
+            "medium": "Medio",
+            "low": "Bajo",
+            "critical_description": "Requiere acción inmediata",
+            "total_indicators_description": "{{percentage}}% respecto a la semana pasada",
+            "medium_description": "En revisión",
+            "high_description": "Monitoreo activo",
+            "low_description": "Informativo",
+            "error": "Hubo un problema al obtener las estadísticas, por favor inténtalo de nuevo.",
+            "empty": "No hay datos disponibles"
+        }
+    },
+    "global": {
+        "error": "Error",
+        "retry": "Intentar de nuevo",
+        "pagination": {
+            "total": "Mostrando {{initial}}-{{end}} de {{total}} {{elements}}",
+            "page": "Ir a la página {page}",
+            "previous": "Página anterior",
+            "next": "Página siguiente"
+        },
+        "indicators": "indicadores",
+        "select_all": "Seleccionar todo",
+        "select_row": "Seleccionar fila {{index}}",
+        "sort_asc": "ascendente",
+        "sort_desc": "descendente",
+        "sort_none": "ninguno"
+    },
+    "indicators": {
+        "filters": {
+            "search": "Buscar indicadores...",
+            "severity": {
+                "all": "Todas las severidades",
+                "critical": "Crítico",
+                "high": "Alto",
+                "medium": "Medio",
+                "low": "Bajo",
+                "label": "Filtrar por severidad"
+            },
+            "type": {
+                "all": "Todos los tipos",
+                "ip": "Dirección IP",
+                "domain": "Dominio",
+                "hash": "Hash de archivo",
+                "url": "URL",
+                "label": "Filtrar por tipo"
+            },
+            "source": {
+                "all": "Todas las fuentes",
+                "label": "Filtrar por fuente"
+            },
+            "clear": "Borrar filtros"
+        },
+        "table": {
+            "select_all": "Seleccionar todas las filas",
+            "select_row": "Seleccionar fila {{index}}",
+            "headings": {
+                "value": "Indicadores",
+                "type": "Tipo",
+                "severity": "Severidad",
+                "confidence": "Confianza",
+                "source": "Fuente",
+                "tags": "Etiquetas",
+                "lastSeen": "Última vez visto"
+            },
+            "type": {
+                "ip": "IP",
+                "domain": "Dominio",
+                "hash": "Hash",
+                "url": "URL"
+            },
+            "severity": {
+                "critical": "Crítico",
+                "high": "Alto",
+                "medium": "Medio",
+                "low": "Bajo"
+            },
+            "error": "Hubo un error al obtener los indicadores, por favor inténtalo de nuevo."
+        },
+        "details": {
+            "title": "Detalles del indicador",
+            "label": {
+                "value": "Valor",
+                "classification": "Clasificación",
+                "confidence": "Puntuación de confianza",
+                "tags": "Etiquetas",
+                "timeline": "Línea temporal",
+                "firstSeen": "Primera vez visto",
+                "lastSeen": "Última vez visto",
+                "auguredOn": "Analizado el",
+                "source": "Fuente",
+                "provider": "Proveedor",
+                "reports": "Informes",
+                "relatedCampaigns": "Campañas relacionadas"
+            },
+            "button": {
+                "investigate": "Investigar",
+                "block": "Bloquear"
+            },
+            "error": "Hubo un error al obtener el indicador, por favor inténtalo de nuevo."
+        }
+    }
+}

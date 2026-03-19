@@ -5,6 +5,7 @@ import { ChartNoAxesColumn, File, Globe, Layers, LayoutGrid, Menu, Search, Shiel
 import { useFocusTrap } from '@/hooks/useFocusTrap'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import '@/styles/sidebar.css'
+import AppButton from './global/AppButton'
 
 type SidebarItem = {
     label: string
@@ -155,13 +156,29 @@ const TheSidebar = () => {
                 >
                     <X size={20} className="text-white" />
                 </button>
-                <nav className="flex-col gap-(--sp-2) flex border-r border-(--border-subtle)">
+                <nav className="flex-col gap-(--sp-2) flex border-r border-(--border-subtle) flex-1">
                     <div className="flex items-center gap-(--sp-3) px-(--sp-5) pb-(--sp-4)">
                         <svg className="w-7 h-7" viewBox="0 0 28 28" fill="none"><path d="M14 2L2 26h24L14 2z" stroke="#fff" strokeWidth="2" fill="none"></path><path d="M14 10l-5 10h10l-5-10z" fill="#6383ff" opacity="0.3"></path></svg>
                         <span className="text-(--augur-logo) [font-family:var(--font-display)] text-[18px] tracking-[3px] leading-none uppercase font-bold">Augur</span>
                     </div>
                     {sidebarItems}
                 </nav>
+                <div className="mx-auto flex gap-(--sp-2) mt-(--sp-6)">
+                    <AppButton
+                        variant="secondary"
+                        onClick={() => i18n.changeLanguage('en')}
+                        disabled={i18n.language === 'en'}
+                    >
+                        English
+                    </AppButton>
+                    <AppButton
+                        variant="secondary"
+                        onClick={() => i18n.changeLanguage('es')}
+                        disabled={i18n.language === 'es'}
+                    >
+                        Spanish
+                    </AppButton>
+                </div>
             </aside>
         </>
     )

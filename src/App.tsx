@@ -12,6 +12,7 @@
 
 import TheSidebar from '@/components/TheSidebar';
 import Dashboard from '@/pages/Dashboard';
+import NotFound from '@/pages/NotFound';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>

@@ -1,4 +1,7 @@
 {
+    "not_found": {
+        "description": "Page not found"
+    },
     "navigation": {
         "dashboard": "Dashboard",
         "augur-events": "Augur Events",
