@@ -28,7 +28,7 @@ const DashboardIndicators = () => {
       <div className="px-(--sp-8) pt-(--sp-4)">
         <IndicatorsDataFilters filters={filters} setFilters={setFilters} uniqueSources={uniqueSources} />
       </div>
-      <div className="flex flex-1">
+      <div className="flex flex-1 overflow-x-auto lg:overflow-x-visible">
         <div className="px-(--sp-8) py-(--sp-4) flex-1">
           <IndicatorsDataTable
             data={data}

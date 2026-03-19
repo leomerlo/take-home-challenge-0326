@@ -4,14 +4,15 @@ type Props<T extends string = string> = SelectHTMLAttributes<HTMLSelectElement> 
     label: string;
     options: { label: string; value: T }[];
     onChange?: (value: T) => void;
+    containerClassName?: string;
 };
 
 const AppSelect = <T extends string = string>(props: Props<T>) => {  
-    const { label, options, onChange, value, id, ...selectProps } = props;
+    const { label, options, onChange, value, id, containerClassName = '', ...selectProps } = props;
     const selectId = id ?? label.toLowerCase().replace(/\s+/g, '-');
     
     return (
-        <div className="custom-select">
+        <div className={`custom-select ${containerClassName}`}>
             <label htmlFor={label} className="sr-only">{label}</label>
             <select
                 id={selectId}

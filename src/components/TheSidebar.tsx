@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ChartNoAxesColumn, File, Globe, Layers, LayoutGrid, Menu, Search, Shield, Users, X } from 'lucide-react'
+import { useFocusTrap } from '@/hooks/useFocusTrap'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import '@/styles/sidebar.css'
 
 type SidebarItem = {
@@ -87,6 +89,15 @@ const SIDEBAR_ITEMS: SidebarGroup[] = [
 const TheSidebar = () => {
     const { t, i18n } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
+    const isMobile = useMediaQuery();
+    const asideRef = useRef<HTMLElement>(null);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
+    const openButtonRef = useRef<HTMLButtonElement>(null);
+
+    useFocusTrap(asideRef, isOpen && isMobile, {
+        initialFocusRef: closeButtonRef,
+        returnFocusRef: openButtonRef,
+    });
 
     const sidebarItems = useMemo(() => {
         return SIDEBAR_ITEMS.map((group, groupIndex) => (
@@ -116,6 +127,7 @@ const TheSidebar = () => {
     return (
         <>
             <button
+                ref={openButtonRef}
                 onClick={() => setIsOpen(true)}
                 className="lg:hidden absolute top-2 right-2 p-(--sp-3) rounded-md hover:bg-(--bg-card) hover:text-(--text-primary) cursor-pointer"
                 data-testid="sidebar-toggle-open"
@@ -123,7 +135,9 @@ const TheSidebar = () => {
                 <Menu size={20} className="text-white" aria-label={t('navigation.open')} />
             </button>
             <aside
+                ref={asideRef}
                 aria-hidden={!isOpen}
+                {...(isOpen && isMobile && { 'aria-modal': true, role: 'dialog', 'aria-label': t('navigation.menu') })}
                 className={`
                     flex flex-col bg-(--bg-sidebar) border-r border-(--border-subtle) py-(--sp-5) overflow-y-auto
                     lg:static lg:block lg:w-(--sidebar-width) lg:shrink-0 lg:h-screen
@@ -133,6 +147,7 @@ const TheSidebar = () => {
                 `}
                 >
                 <button
+                    ref={closeButtonRef}
                     onClick={() => setIsOpen(false)}
                     className="lg:hidden absolute top-2 right-2 p-(--sp-3) rounded-md hover:bg-(--bg-card) hover:text-(--text-primary) cursor-pointer"
                     data-testid="sidebar-toggle-close"

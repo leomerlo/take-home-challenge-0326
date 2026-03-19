@@ -33,17 +33,17 @@ const IndicatorsDataFilters = (props: Props) => {
   };
 
   return (
-    <div className="flex items-center justify-between border-b border-(--border-subtle) -mx-(--sp-8) px-(--sp-8) py-(--sp-4) bg-(--bg-surface)">
-      <form className="flex gap-(--sp-3) items-center">
+    <div className="flex flex-col lg:flex-row items-start lg:items-center gap-(--sp-4) lg:justify-between border-b border-(--border-subtle) -mx-(--sp-8) px-(--sp-8) py-(--sp-4) bg-(--bg-surface)">
+      <form className="flex flex-col lg:flex-row gap-(--sp-3) items-start lg:items-center w-full lg:w-auto">
         <AppInput
           label={t('indicators.filters.search')}
           icon={<SearchIcon className="w-4 h-4 text-(--text-tertiary)" aria-hidden="true" />}
           value={searchValue}
           onChange={handleSearchChange}
           placeholder={t('indicators.filters.search')}
-          containerClassName="w-[260px]"
+          containerClassName="w-full lg:w-[260px]"
         />
-        <div className="border-r border-(--border-default) h-6"></div>
+        <div className="border-r border-(--border-default) h-6 hidden lg:block"></div>
         <AppSelect<Severity | ''>
           label={t('indicators.filters.severity.label')}
           value={filters.severity ?? ''}
@@ -55,6 +55,7 @@ const IndicatorsDataFilters = (props: Props) => {
             { label: t('indicators.filters.severity.medium'), value: 'medium' },
             { label: t('indicators.filters.severity.low'), value: 'low' },
           ]}
+          containerClassName="w-full lg:w-[260px]"
         />
         <AppSelect<IndicatorType | ''>
           label={t('indicators.filters.type.label')}
@@ -67,6 +68,7 @@ const IndicatorsDataFilters = (props: Props) => {
             { label: t('indicators.filters.type.hash'), value: 'hash' },
             { label: t('indicators.filters.type.url'), value: 'url' },
           ]}
+          containerClassName="w-full lg:w-[260px]"
         />
         <AppSelect<string | ''>
           label={t('indicators.filters.source.label')}
@@ -76,6 +78,7 @@ const IndicatorsDataFilters = (props: Props) => {
             { label: t('indicators.filters.source.all'), value: '' },
             ...uniqueSources.map((source) => ({ label: source, value: source })),
           ]}
+          containerClassName="w-full lg:w-[260px]"
         />
       </form>
       <AppButton
@@ -87,6 +90,8 @@ const IndicatorsDataFilters = (props: Props) => {
           type: undefined,
           page: 1,
         }))}
+        disabled={filters.search === '' && filters.severity === undefined && filters.type === undefined && filters.source === ''}
+        className="w-full lg:w-auto"
       >
         {t('indicators.filters.clear')}
       </AppButton>

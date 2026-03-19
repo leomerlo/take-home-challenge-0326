@@ -1,6 +1,7 @@
 import { X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import AppButton from '../../global/AppButton';
 import AppBadge, { AppBadgeSeverity } from '../../global/AppBadge';
 import AppConfidenceBar, { AppConfidenceBarVariant } from '../../global/AppConfidenceBar';
@@ -21,6 +22,7 @@ type Props = {
 const IndicatorDetails = (props: Props) => {
   const { indicatorId, onClose } = props;
   const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useMediaQuery();
   const { data, loading, error } = useIndicator(indicatorId ?? '');
   const { t } = useTranslation();
 
@@ -43,15 +45,14 @@ const IndicatorDetails = (props: Props) => {
     <>
       <aside
         className={`
-          overflow-hidden shrink-0
-          transition-[width] duration-200 ease-out
-          shadow-(--shadow-elevated)
-          relative
-          h-full z-60
-          ${isOpen ? 'w-(--detail-width)' : 'w-0'}
+          z-60 ease-out shadow-(--shadow-elevated) duration-200 h-full
+          ${isMobile 
+            ? `fixed inset-0 w-full transition-transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`
+            : `overflow-hidden shrink-0 transition-[width] relative ${isOpen ? 'w-(--detail-width)' : 'w-0'}`
+          }
         `}
       >
-        <div className="absolute top-0 left-0 w-(--detail-width) border-l border-(--border-subtle) bg-(--bg-surface) h-full">
+        <div className={`absolute top-0 left-0 border-l border-(--border-subtle) bg-(--bg-surface) h-full w-full lg:w-(--detail-width)`}>
           <div className="flex flex-col w-full h-full">
             <div className="sticky py-(--sp-4) px-(--sp-5) border-b border-(--border-subtle) flex justify-between items-center">
               <h3 className="text-[14px] font-semibold text-white">{t('indicators.details.title')}</h3>

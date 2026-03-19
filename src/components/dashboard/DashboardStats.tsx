@@ -38,7 +38,7 @@ const DashboardStats = () => {
 
   return (
     <>
-        <div className="grid grid-cols-5 gap-(--sp-4)">
+        <div className="grid grid-rows-5 lg:grid-rows-1 lg:grid-cols-5 gap-(--sp-4)">
             <StatsCard
                 variant="total"
                 title={t(`dashboard.stats.total_indicators`)}

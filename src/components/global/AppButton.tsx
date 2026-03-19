@@ -55,7 +55,7 @@ const AppButton = (props: {
 
     return (
         <button
-            className={`inline-flex items-center justify-center gap-2 px-[14px] py-[7px] rounded-md border font-sans text-md cursor-pointer whitespace-nowrap leading-tight ${variantClass} ${sizeClass} ${className}`}
+            className={`inline-flex items-center justify-center gap-2 px-[14px] py-[7px] rounded-md border font-sans text-md cursor-pointer whitespace-nowrap leading-tight ${variantClass} ${sizeClass} ${className} disabled:opacity-50 disabled:cursor-not-allowed`}
             onClick={onClick}
             disabled={disabled}
             data-testid={testId}

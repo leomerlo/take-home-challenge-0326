@@ -15,7 +15,8 @@
         "notifications_one": "You have 1 notification",
         "notifications_other": "You have {{count}} notifications",
         "open": "Open menu",
-        "close": "Close menu"
+        "close": "Close menu",
+        "menu": "Navigation menu"
     },
     "dashboard": {
         "stats": {
