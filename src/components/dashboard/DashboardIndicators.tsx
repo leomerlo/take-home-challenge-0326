@@ -16,6 +16,8 @@ const DashboardIndicators = () => {
     severity: undefined,
     type: undefined,
     search: '',
+    sortKey: 'lastSeen',
+    sortOrder: 'desc',
   });
   const { data, total, page, loading, error } = useIndicators(filters);
   const [selectedIndicator, setSelectedIndicator] = useState<Indicator | null>(null);
@@ -27,7 +29,17 @@ const DashboardIndicators = () => {
       </div>
       <div className="flex flex-1">
         <div className="px-(--sp-8) py-(--sp-4) flex-1">
-          <IndicatorsDataTable data={data} loading={loading} error={error} onRowClick={setSelectedIndicator} />
+          <IndicatorsDataTable
+            data={data}
+            loading={loading}
+            error={error}
+            onRowClick={setSelectedIndicator}
+            sortKey={filters.sortKey}
+            sortOrder={filters.sortOrder}
+            onSortChange={(sortKey, sortOrder) => {
+              setFilters({ ...filters, sortKey, sortOrder, page: 1 });
+            }}
+          />
           <AppPagination
             total={total}
             page={page}

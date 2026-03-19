@@ -32,11 +32,13 @@ export interface PaginatedResponse<T> {
 }
 
 export interface IndicatorFilters {
+  limit?: number;
+  page?: number;
   search?: string;
   severity?: Severity;
+  sortKey?: string;
+  sortOrder?: 'asc' | 'desc';
   type?: IndicatorType;
-  page?: number;
-  limit?: number;
 }
 
 export interface RelatedCampaign {

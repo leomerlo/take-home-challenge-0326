@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { generateIndicators } from './data.js';
+import { sortIndicators } from './sortUtils.js';
 
 const app = express();
 const PORT = 3001;
@@ -20,7 +21,9 @@ const indicators = generateIndicators(500);
  *   - severity (string, one of: critical, high, medium, low)
  *   - type     (string, one of: ip, domain, hash, url)
  *   - search   (string, partial match on indicator value)
- *
+ *   - sortKey  (string, one of: value, type, severity, source, firstSeen, lastSeen, confidence, reports, auguredOn)
+ *   - sortOrder (string, one of: asc, desc)
+ * 
  * Response:
  *   {
  *     data: Indicator[],
@@ -35,6 +38,8 @@ app.get('/api/indicators', (req, res) => {
   const severity = req.query.severity?.toLowerCase();
   const type = req.query.type?.toLowerCase();
   const search = req.query.search?.toLowerCase();
+  const sortKey = req.query.sortKey;
+  const sortOrder = req.query.sortOrder?.toLowerCase();
 
   let filtered = [...indicators];
 
@@ -55,10 +60,12 @@ app.get('/api/indicators', (req, res) => {
     );
   }
 
-  const total = filtered.length;
+  const sorted = sortIndicators(filtered, sortKey, sortOrder);
+
+  const total = sorted.length;
   const totalPages = Math.ceil(total / limit);
   const start = (page - 1) * limit;
-  const data = filtered.slice(start, start + limit);
+  const data = sorted.slice(start, start + limit);
 
   // Simulate slight network latency (200–600ms)
   const delay = 200 + Math.random() * 400;

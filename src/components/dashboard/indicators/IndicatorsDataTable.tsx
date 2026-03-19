@@ -14,11 +14,14 @@ type Props = {
   data: Indicator[] | undefined;
   loading: boolean;
   error: Error | null;
+  sortKey?: string;
+  sortOrder?: 'asc' | 'desc';
+  onSortChange?: (sortKey: string, sortOrder: 'asc' | 'desc') => void;
   onRowClick: (row: Indicator) => void;
 }
 
 const IndicatorsDataTable = (props: Props) => {
-  const { data, loading, error, onRowClick } = props;
+  const { data, loading, error, sortKey, sortOrder, onSortChange, onRowClick } = props;
   const [selectedRows, setSelectedRows] = useState<Indicator[]>([]);
   const { t } = useTranslation();
 
@@ -90,10 +93,13 @@ const IndicatorsDataTable = (props: Props) => {
         data={data ?? []}
         rowKey="id"
         cellSlots={cellSlots}
+        sortKey={sortKey}
+        sortOrder={sortOrder}
         selectedRowKeys={selectedRows.map((row) => row.id)}
         onSelectionChange={(_selectedKeys, selectedRows) => {
           setSelectedRows(selectedRows);
         }}
+        onSortChange={onSortChange}
         onRowClick={(row) => {
           onRowClick(row);
           setSelectedRows([row]);

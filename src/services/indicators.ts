@@ -8,6 +8,8 @@ function buildQueryString(filters: IndicatorFilters): string {
   if (filters.severity) params.set('severity', filters.severity);
   if (filters.type) params.set('type', filters.type);
   if (filters.search) params.set('search', filters.search);
+  if (filters.sortKey) params.set('sortKey', filters.sortKey);
+  if (filters.sortOrder) params.set('sortOrder', filters.sortOrder);
   const qs = params.toString();
   return qs ? `?${qs}` : '';
 }

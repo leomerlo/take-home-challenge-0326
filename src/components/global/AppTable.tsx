@@ -15,13 +15,14 @@ export type AppTableProps<T extends object> = {
   selectable?: boolean
   selectedRowKeys?: string[]
   onSelectionChange?: (selectedKeys: string[], selectedRows: T[]) => void
+  onSortChange?: (sortKey: string, sortOrder: 'asc' | 'desc') => void
+  sortKey?: string
+  sortOrder?: 'asc' | 'desc'
   headingSlots?: Partial<Record<string, React.ReactNode>>
   cellSlots?: Partial<Record<string, (row: T, index: number) => React.ReactNode>>
   onRowClick?: (row: T, index: number) => void
   className?: string
 }
-
-type SortDirection = 'asc' | 'desc' | null
 
 const AppTable = <T extends object>(props: AppTableProps<T>) => {
   const {
@@ -30,17 +31,16 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
     rowKey,
     selectable = false,
     selectedRowKeys: controlledSelectedKeys,
+    sortKey,
+    sortOrder,
     onSelectionChange,
+    onSortChange,
     headingSlots = {},
     cellSlots = {},
     onRowClick,
     className = '',
   } = props
   
-  const [internalSort, setInternalSort] = useState<{
-    key: string
-    direction: SortDirection
-  }>({ key: '', direction: null })
   const [internalSelected, setInternalSelected] = useState<Set<string>>(new Set())
   
   const isControlled = controlledSelectedKeys !== undefined
@@ -58,32 +58,6 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
     },
     [rowKey]
   )
-  
-  const sortedData = useMemo(() => {
-    const { key: sortKey, direction } = internalSort
-    if (!sortKey || !direction) return data
-    
-    return [...data].sort((a, b) => {
-      const aVal = (a as Record<string, unknown>)[sortKey]
-      const bVal = (b as Record<string, unknown>)[sortKey]
-      
-      const aCompare =
-      aVal == null ? '' : typeof aVal === 'string' ? aVal : String(aVal)
-      const bCompare =
-      bVal == null ? '' : typeof bVal === 'string' ? bVal : String(bVal)
-      
-      const cmp = aCompare.localeCompare(bCompare, undefined, { numeric: true })
-      return direction === 'asc' ? cmp : -cmp
-    })
-  }, [data, internalSort])
-  
-  const handleSort = useCallback((key: string) => {
-    setInternalSort((prev) => {
-      if (prev.key !== key) return { key, direction: 'asc' }
-      if (prev.direction === 'asc') return { key, direction: 'desc' }
-      return { key: '', direction: null }
-    })
-  }, [])
   
   const toggleRowSelection = useCallback(
     (id: string) => {
@@ -149,8 +123,7 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
           {headings.map((h) => {
             const key = String(h.key)
             const customHeading = headingSlots[key]
-            const { direction } = internalSort
-            const isActive = internalSort.key === key
+            const isActive = sortKey === key
             
             return (
               <th
@@ -159,7 +132,7 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
                   h.sortable ? 'cursor-pointer select-none hover:text-(--text-primary)' : ''
                 }`}
                 style={h.width != null ? { width: typeof h.width === 'number' ? `${h.width}px` : h.width } : undefined}
-                onClick={() => h.sortable && handleSort(key)}
+                onClick={() => h.sortable && onSortChange?.(key, sortOrder === 'asc' ? 'desc' : 'asc')}
               >
                 <div className="flex items-center gap-(--sp-1)">
                 {customHeading ?? (
@@ -167,10 +140,10 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
                   <span>{h.label}</span>
                   {h.sortable && (
                     <span className="text-(--text-tertiary)">
-                    {isActive && direction === 'asc' && (
+                    {isActive && sortOrder === 'asc' && (
                       <ChevronUp className="h-4 w-4" />
                     )}
-                    {isActive && direction === 'desc' && (
+                    {isActive && sortOrder === 'desc' && (
                       <ChevronDown className="h-4 w-4" />
                     )}
                     {!isActive && (
@@ -187,7 +160,7 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
           </tr>
         </thead>
         <tbody className="text-[13px] text-(--text-secondary)">
-        {sortedData.map((row, index) => {
+        {data.map((row, index) => {
           const id = getRowId(row)
           const isSelected = selectedKeys.has(id)
           const isClickable = !!onRowClick

@@ -118,4 +118,4 @@ The project includes Vitest + React Testing Library. Write tests for your key co
 
 1. In case the current design system is using CSS vars, I opted out of moving the values into tailwind's theme and used the vars with tailwinds.
 2. I used TanStack Query for data fetching to bring this assignment closer to a production-ready implementation, with caching and robust loading/error handling.
-3. There was missing data from the APIs that was being rendered on the UI, I took it upon myself to add them in
+3. Added sorting on the server side, even though the mock only showed filtering on Indicator and Last Seen, it seemed prudent to create the feature for all columns.
