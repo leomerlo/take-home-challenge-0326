@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { ButtonHTMLAttributes, useMemo } from 'react'
 
 export type AppButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
 export type AppButtonSize = 'small' | 'medium'
@@ -14,8 +14,8 @@ const AppButton = (props: {
     className?: string
     iconPosition?: AppButtonIconPosition
     icon?: React.ReactNode
-}) => {
-    const { children, onClick, testId, disabled, variant = 'primary', size = 'medium', className = '', iconPosition = 'left', icon } = props
+} & ButtonHTMLAttributes<HTMLButtonElement>) => {
+    const { children, onClick, testId, disabled, variant = 'primary', size = 'medium', className = '', iconPosition = 'left', icon, ...buttonProps } = props
 
     /**
      * Generate the variant classes based on the variant prop
@@ -59,6 +59,7 @@ const AppButton = (props: {
             onClick={onClick}
             disabled={disabled}
             data-testid={testId}
+            {...buttonProps}
         >
             {icon && iconPosition === 'left' && <div className="flex items-center justify-center w-4 h-4">{icon}</div>}
             {children}

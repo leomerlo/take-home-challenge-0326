@@ -37,7 +37,10 @@
         "error": "Error",
         "retry": "Try again",
         "pagination": {
-            "total": "Showing {{initial}}-{{end}} of {{total}} {{elements}}"
+            "total": "Showing {{initial}}-{{end}} of {{total}} {{elements}}",
+            "page": "Go to page {page}",
+            "previous": "Previous page",
+            "next": "Next page"
         },
         "indicators": "indicators",
         "select_all": "Select all",

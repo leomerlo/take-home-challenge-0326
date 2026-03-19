@@ -98,6 +98,7 @@ const AppPagination = (props: Props) => {
           size="small"
           onClick={() => onPageChange(page - 1)}
           disabled={page === 1}
+          aria-label={t('global.pagination.previous')}
         >
           <ChevronLeft size={8} />
         </AppButton>
@@ -117,6 +118,8 @@ const AppPagination = (props: Props) => {
               className="h-[30px] w-[30px]"
               size="small"
               onClick={() => onPageChange(item)}
+              aria-label={t('global.pagination.page', { page: item })}
+              aria-current={item === page ? 'page' : undefined}
             >
               <span className="text-[10px]">{item}</span>
             </AppButton>
@@ -129,6 +132,7 @@ const AppPagination = (props: Props) => {
           size="small"
           onClick={() => onPageChange(page + 1)}
           disabled={page === totalPages}
+          aria-label={t('global.pagination.next')}
         >
           <ChevronRight size={8} />
         </AppButton>
