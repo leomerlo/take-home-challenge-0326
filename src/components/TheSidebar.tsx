@@ -163,7 +163,7 @@ const TheSidebar = () => {
                     </div>
                     {sidebarItems}
                 </nav>
-                <div className="mx-auto flex gap-(--sp-2) mt-(--sp-6)">
+                <div className="gap-(--sp-2) mt-(--sp-6) flex justify-center items-end">
                     <AppButton
                         variant="secondary"
                         onClick={() => i18n.changeLanguage('en')}
