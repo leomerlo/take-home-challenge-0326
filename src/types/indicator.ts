@@ -29,6 +29,7 @@ export interface PaginatedResponse<T> {
   total: number;
   page: number;
   totalPages: number;
+  uniqueSources: string[];
 }
 
 export interface IndicatorFilters {
@@ -38,6 +39,7 @@ export interface IndicatorFilters {
   severity?: Severity;
   sortKey?: string;
   sortOrder?: 'asc' | 'desc';
+  source?: string;
   type?: IndicatorType;
 }
 

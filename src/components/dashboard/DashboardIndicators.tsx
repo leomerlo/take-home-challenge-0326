@@ -18,14 +18,15 @@ const DashboardIndicators = () => {
     search: '',
     sortKey: 'lastSeen',
     sortOrder: 'desc',
+    source: '',
   });
-  const { data, total, page, loading, error } = useIndicators(filters);
+  const { data, total, page, loading, error, uniqueSources } = useIndicators(filters);
   const [selectedIndicator, setSelectedIndicator] = useState<Indicator | null>(null);
   
   return (
     <div className="flex flex-col flex-1">
       <div className="px-(--sp-8) pt-(--sp-4)">
-        <IndicatorsDataFilters filters={filters} setFilters={setFilters} />
+        <IndicatorsDataFilters filters={filters} setFilters={setFilters} uniqueSources={uniqueSources} />
       </div>
       <div className="flex flex-1">
         <div className="px-(--sp-8) py-(--sp-4) flex-1">

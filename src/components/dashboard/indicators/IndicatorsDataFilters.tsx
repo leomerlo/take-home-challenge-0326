@@ -9,11 +9,12 @@ import AppButton from '../../global/AppButton';
 
 type Props = {
   filters: IndicatorFilters;
+  uniqueSources: string[];
   setFilters: React.Dispatch<React.SetStateAction<IndicatorFilters>>;
 }
 
 const IndicatorsDataFilters = (props: Props) => {
-  const { filters, setFilters } = props;
+  const { filters, uniqueSources, setFilters } = props;
   const { t } = useTranslation();
   const [searchValue, setSearchValue] = useState(filters.search);
 
@@ -46,7 +47,7 @@ const IndicatorsDataFilters = (props: Props) => {
         <AppSelect<Severity | ''>
           label={t('indicators.filters.severity.label')}
           value={filters.severity ?? ''}
-          onChange={(value) => setFilters({ ...filters, severity: value as Severity })}
+          onChange={(value) => setFilters({ ...filters, severity: value as Severity, page: 1 })}
           options={[
             { label: t('indicators.filters.severity.all'), value: '' },
             { label: t('indicators.filters.severity.critical'), value: 'critical' },
@@ -58,7 +59,7 @@ const IndicatorsDataFilters = (props: Props) => {
         <AppSelect<IndicatorType | ''>
           label={t('indicators.filters.type.label')}
           value={filters.type ?? ''}
-          onChange={(value) => setFilters({ ...filters, type: value as IndicatorType })}
+          onChange={(value) => setFilters({ ...filters, type: value as IndicatorType, page: 1 })}
           options={[
             { label: t('indicators.filters.type.all'), value: '' },
             { label: t('indicators.filters.type.ip'), value: 'ip' },
@@ -67,12 +68,13 @@ const IndicatorsDataFilters = (props: Props) => {
             { label: t('indicators.filters.type.url'), value: 'url' },
           ]}
         />
-        <AppSelect
+        <AppSelect<string | ''>
           label={t('indicators.filters.source.label')}
-          value={''}
-          onChange={() => false}
+          value={filters.source ?? ''}
+          onChange={(value) => setFilters({ ...filters, source: value as string, page: 1 })}
           options={[
             { label: t('indicators.filters.source.all'), value: '' },
+            ...uniqueSources.map((source) => ({ label: source, value: source })),
           ]}
         />
       </form>

@@ -38,6 +38,7 @@ app.get('/api/indicators', (req, res) => {
   const severity = req.query.severity?.toLowerCase();
   const type = req.query.type?.toLowerCase();
   const search = req.query.search?.toLowerCase();
+  const source = req.query.source;
   const sortKey = req.query.sortKey;
   const sortOrder = req.query.sortOrder?.toLowerCase();
 
@@ -49,6 +50,11 @@ app.get('/api/indicators', (req, res) => {
 
   if (type && ['ip', 'domain', 'hash', 'url'].includes(type)) {
     filtered = filtered.filter((i) => i.type === type);
+  }
+
+  if (source) {
+    const sourceLower = source.toLowerCase().trim();
+    filtered = filtered.filter((i) => i.source.toLowerCase().trim() === sourceLower);
   }
 
   if (search) {
@@ -66,11 +72,12 @@ app.get('/api/indicators', (req, res) => {
   const totalPages = Math.ceil(total / limit);
   const start = (page - 1) * limit;
   const data = sorted.slice(start, start + limit);
+  const uniqueSources = Array.from(new Set(data.map((i) => i.source)));
 
   // Simulate slight network latency (200–600ms)
   const delay = 200 + Math.random() * 400;
   setTimeout(() => {
-    res.json({ data, total, page, totalPages });
+    res.json({ data, total, page, totalPages, uniqueSources });
   }, delay);
 });
 

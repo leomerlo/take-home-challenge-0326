@@ -4,7 +4,7 @@ import { fetchIndicators } from '@/services/indicators';
 
 export function useIndicators(filters: IndicatorFilters = {}) {
   const query = useQuery({
-    queryKey: ['indicators', filters.page, filters.limit, filters.severity, filters.type, filters.search, filters.sortKey, filters.sortOrder],
+    queryKey: ['indicators', filters.page, filters.limit, filters.severity, filters.type, filters.search, filters.sortKey, filters.sortOrder, filters.source],
     queryFn: () => fetchIndicators(filters),
   });
 
@@ -15,6 +15,7 @@ export function useIndicators(filters: IndicatorFilters = {}) {
     total: response?.total ?? 0,
     page: response?.page ?? 1,
     totalPages: response?.totalPages ?? 0,
+    uniqueSources: response?.uniqueSources ?? [],
     loading: query.isLoading,
     error: query.error instanceof Error ? query.error : null,
     refetch: query.refetch,

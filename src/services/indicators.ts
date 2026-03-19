@@ -10,6 +10,7 @@ function buildQueryString(filters: IndicatorFilters): string {
   if (filters.search) params.set('search', filters.search);
   if (filters.sortKey) params.set('sortKey', filters.sortKey);
   if (filters.sortOrder) params.set('sortOrder', filters.sortOrder);
+  if (filters.source) params.set('source', filters.source);
   const qs = params.toString();
   return qs ? `?${qs}` : '';
 }
