@@ -12,7 +12,7 @@ const AppInput = (props: Props) => {
 
   return (
     <div
-      className={`bg-(--bg-input) border border-(--border-default) rounded-md px-(--sp-2) py-(--sp-1) text-(--text-primary) text-[12.5px] flex gap-2 items-center focus-within:border-(--augur-blue) focus-within:shadow-(--shadow-input) ${containerClassName}`}
+      className={`bg-(--bg-input) border border-(--border-default) rounded-md px-(--sp-2) py-(--sp-1) text-(--text-primary) text-xs flex gap-2 items-center focus-within:border-(--augur-blue) focus-within:shadow-(--shadow-input) ${containerClassName}`}
     >
       {icon ? (
         <label htmlFor={inputId} className="cursor-pointer shrink-0" aria-label={label}>

@@ -30,7 +30,7 @@ function AppBadge(props: Props) {
     }, [severity])
 
     return (
-        <div className={`inline-flex items-center justify-center gap-4 px-2 py-[2px] rounded-sm border text-[11px] capitalize font-medium cursor-pointer whitespace-nowrap leading-tight ${variantClass}`}>
+        <div className={`inline-flex items-center justify-center gap-4 px-2 py-[2px] rounded-sm border text-xs capitalize font-medium cursor-pointer whitespace-nowrap leading-tight ${variantClass}`}>
             {children}
         </div>
     )

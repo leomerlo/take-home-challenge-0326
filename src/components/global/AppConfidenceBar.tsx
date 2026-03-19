@@ -49,7 +49,7 @@ const AppConfidenceBar = (props: Props) => {
             <div className={`w-full h-[4px] rounded-sm bg-(--bg-elevated)`}>
                 <div className={`h-full rounded-sm ${fillClass}`} style={{ width: `${confidence}%` }} aria-valuenow={confidence} aria-valuemin={0} aria-valuemax={100} role="progressbar" aria-label={label}></div>
             </div>
-            <span className={`text-[11px] font-bold ${textClass}`}>{confidence}</span>
+            <span className={`text-xs font-bold ${textClass}`}>{confidence}</span>
         </div>
     )
 }

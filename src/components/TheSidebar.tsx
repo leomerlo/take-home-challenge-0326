@@ -104,20 +104,20 @@ const TheSidebar = () => {
         return SIDEBAR_ITEMS.map((group, groupIndex) => (
             <div key={groupIndex} data-testid={`sidebar-group-${group.label ? group.label : 'default'}`} className="flex flex-col gap-[2px]">
                 {group.label && (
-                    <div className="text-(--text-tertiary) uppercase lg:text-[10px] tracking-[1.2px] px-(--sp-5) pt-(--sp-3) pb-(--sp-2) font-semibold">{t(`navigation.${group.label}`)}</div>
+                    <div className="text-(--text-tertiary) uppercase lg:text-2xs tracking-[1.2px] px-(--sp-5) pt-(--sp-3) pb-(--sp-2) font-semibold">{t(`navigation.${group.label}`)}</div>
                 )}
                 {group.items.map((item) => (
                     <NavLink
                         key={item.href}
                         to={item.href}
                         data-testid={`sidebar-item-${item.label}`}
-                        className={({ isActive }) => `nav-item flex items-center gap-(--sp-3) rounded-md px-(--sp-5) py-(--sp-4) lg:py-(--sp-2) mx-(--sp-2) my-(1px) lg:text-[13px] transition-all duration-150 ease hover:bg-(--bg-card) hover:text-(--text-primary) ${isActive ? 'bg-(--bg-sidebar-active) text-(--augur-blue)' : 'text-(--text-secondary)'}`}
+                        className={({ isActive }) => `nav-item flex items-center gap-(--sp-3) rounded-md px-(--sp-5) py-(--sp-4) lg:py-(--sp-2) mx-(--sp-2) my-(1px) lg:text-sm transition-all duration-150 ease hover:bg-(--bg-card) hover:text-(--text-primary) ${isActive ? 'bg-(--bg-sidebar-active) text-(--augur-blue)' : 'text-(--text-secondary)'}`}
                         end
                     >
                         <div className="nav-icon opacity-60">{item.icon}</div>
                         <span className="leading-none flex-1">{t(`navigation.${item.label}`)}</span>
                         {item.notification && (
-                            <span title={`${t(`navigation.notifications`, { count: item.notification })}`} className="text-white bg-(--severity-critical) rounded-full text-[10px] flex items-center justify-center min-w-[18px] px-[6px] py-px">{item.notification}</span>
+                            <span title={`${t(`navigation.notifications`, { count: item.notification })}`} className="text-white bg-(--severity-critical) rounded-full text-2xs flex items-center justify-center min-w-[18px] px-[6px] py-px">{item.notification}</span>
                         )}
                     </NavLink>
                 ))}
@@ -161,7 +161,7 @@ const TheSidebar = () => {
                 <nav className="flex-col gap-(--sp-2) flex border-r border-(--border-subtle) flex-1">
                     <div className="flex items-center gap-(--sp-3) px-(--sp-5) pb-(--sp-4)">
                         <svg className="w-7 h-7" viewBox="0 0 28 28" fill="none"><path d="M14 2L2 26h24L14 2z" stroke="#fff" strokeWidth="2" fill="none"></path><path d="M14 10l-5 10h10l-5-10z" fill="#6383ff" opacity="0.3"></path></svg>
-                        <span className="text-(--augur-logo) [font-family:var(--font-display)] text-[18px] tracking-[3px] leading-none uppercase font-bold">Augur</span>
+                        <span className="text-(--augur-logo) [font-family:var(--font-display)] text-lg tracking-[3px] leading-none uppercase font-bold">Augur</span>
                     </div>
                     {sidebarItems}
                 </nav>

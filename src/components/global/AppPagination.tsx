@@ -87,7 +87,7 @@ const AppPagination = (props: Props) => {
   return (
     <div className="flex items-center justify-between">
       <div>
-        <span className="text-[12px] text-(--text-tertiary)">
+        <span className="text-xs text-(--text-tertiary)">
           {t('global.pagination.total', { initial, end, total, elements })}
         </span>
       </div>
@@ -107,7 +107,7 @@ const AppPagination = (props: Props) => {
           item === 'ellipsis' ? (
             <span
               key={`ellipsis-${index}`}
-              className="flex h-[30px] w-[30px] items-center justify-center text-[10px] text-(--text-tertiary)"
+              className="flex h-[30px] w-[30px] items-center justify-center text-2xs text-(--text-tertiary)"
             >
               …
             </span>
@@ -121,7 +121,7 @@ const AppPagination = (props: Props) => {
               aria-label={t('global.pagination.page', { page: item })}
               aria-current={item === page ? 'page' : undefined}
             >
-              <span className="text-[10px]">{item}</span>
+              <span className="text-2xs">{item}</span>
             </AppButton>
           )
         )}

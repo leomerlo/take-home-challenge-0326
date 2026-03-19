@@ -53,13 +53,13 @@ const StatsCard = (props: Props) => {
     return (
         <div className="flex flex-col gap-(--sp-1) rounded-lg px-(--sp-5) py-(--sp-4) bg-(--bg-card) border border-transparent hover:border-(--border-hover) transition-border-color duration-200 ease">
             <div className="flex items-center justify-between gap-(--sp-2)">
-            <span className="text-[10.5px] uppercase font-semibold tracking-widest text-(--text-tertiary)">{title}</span>
+            <span className="text-2xs uppercase font-semibold tracking-widest text-(--text-tertiary)">{title}</span>
                 {icon && <div className="flex items-center justify-center w-4 h-4 text-(--text-tertiary)">{icon}</div>}
             </div>
             <div className="flex items-center justify-between">
-                <span className={`text-[26px] font-bold tracking-tight leading-tight ${valueClass}`}>{value}</span>
+                <span className={`text-3xl font-bold tracking-tight leading-tight ${valueClass}`}>{value}</span>
             </div>
-            <div className="text-[11px] text-(--text-tertiary)">
+            <div className="text-xs text-(--text-tertiary)">
                 {description}
             </div>
         </div>

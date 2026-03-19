@@ -7,7 +7,6 @@ import AppBadge, { AppBadgeSeverity } from '../../global/AppBadge';
 import AppConfidenceBar, { AppConfidenceBarVariant } from '../../global/AppConfidenceBar';
 import AppTags from '../../global/AppTags';
 import { TAG_VARIANTS, TYPE_ICONS } from '@/helpers/indicatorHelpers';
-import '@/styles/indicatorDetails.css';
 import { formatDate, formatDateUTC, formatTimeAgo } from '@/helpers/dateHelpers';
 import { useIndicator } from '@/hooks/useIndicator';
 import { Link } from 'react-router-dom';
@@ -58,7 +57,7 @@ const IndicatorDetails = (props: Props) => {
         <div className={`absolute top-0 left-0 border-l border-(--border-subtle) bg-(--bg-surface) h-full w-full lg:w-(--detail-width)`}>
           <div className="flex flex-col w-full h-full">
             <div className="sticky py-(--sp-4) px-(--sp-5) border-b border-(--border-subtle) flex justify-between items-center">
-              <h1 className="text-[14px] font-semibold text-white">{t('indicators.details.title')}</h1>
+              <h1 className="text-sm font-semibold text-white">{t('indicators.details.title')}</h1>
               <AppButton
                 variant="ghost"
                 onClick={handleClose}
@@ -75,13 +74,13 @@ const IndicatorDetails = (props: Props) => {
             <div className="flex-1 flex flex-col gap-(--sp-6) p-(--sp-5) pb-(--sp-6) overflow-y-auto">
               <div className="detail-section">
                 <span className="detail-section-header">{t('indicators.details.label.value')}</span>
-                <span className="text-[13px] text-(--augur-blue) font-mono break-all">{data.value}</span>
+                <span className="text-sm text-(--augur-blue) font-mono break-all">{data.value}</span>
               </div>
               <div className="detail-section">
                 <span className="detail-section-header">{t('indicators.details.label.classification')}</span>
                 <div className="flex items-center gap-(--sp-2)">
                   <AppBadge severity={data.severity as AppBadgeSeverity}>{t(`indicators.table.severity.${data.severity}`)}</AppBadge>
-                  <span className="text-[11px] text-(--text-secondary) uppercase">{TYPE_ICONS[data.type] ?? '•'} {t(`indicators.table.type.${data.type}`)}</span>
+                  <span className="text-xs text-(--text-secondary) uppercase">{TYPE_ICONS[data.type] ?? '•'} {t(`indicators.table.type.${data.type}`)}</span>
                 </div>
               </div>
               <div className="detail-section">
@@ -131,8 +130,8 @@ const IndicatorDetails = (props: Props) => {
                 <div className="flex flex-col gap-(--sp-2)">
                   {data.relatedCampaigns.map((campaign) => (
                     <div key={campaign.name} className="flex items-center gap-(--sp-2)">
-                      <Link to={`/campaigns/${campaign.name}`} className="text-[12.5px] text-(--augur-blue)! truncate">{campaign.name}</Link>
-                      <span className="text-[11px] text-(--text-tertiary)">{campaign.actor}</span>
+                      <Link to={`/campaigns/${campaign.name}`} className="text-xs text-(--augur-blue)! truncate">{campaign.name}</Link>
+                      <span className="text-xs text-(--text-tertiary)">{campaign.actor}</span>
                     </div>
                   ))}
                 </div>

@@ -145,7 +145,7 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
                 key={key}
                 scope="col"
                 {...(ariaSort && { 'aria-sort': ariaSort })}
-                className={`px-(--sp-4) py-(--sp-3) font-semibold text-(--text-tertiary) uppercase text-[10.5px] tracking-[.8px] ${
+                className={`px-(--sp-4) py-(--sp-3) font-semibold text-(--text-tertiary) uppercase text-2xs tracking-[.8px] ${
                   h.sortable ? 'cursor-pointer select-none hover:text-(--text-primary)' : ''
                 }`}
                 style={h.width != null ? { width: typeof h.width === 'number' ? `${h.width}px` : h.width } : undefined}
@@ -176,7 +176,7 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
           })}
           </tr>
         </thead>
-        <tbody className="text-[13px] text-(--text-secondary)">
+        <tbody className="text-sm text-(--text-secondary)">
         {data.map((row, index) => {
           const id = getRowId(row)
           const isSelected = selectedKeys.has(id)

@@ -47,15 +47,15 @@ const AppButton = (props: {
     const sizeClass = useMemo((): string => {
         switch (size) {
             case 'small':
-                return 'text-[11.5px] px-[10px]! py-[4px]!'
+                return 'text-xs px-[10px]! py-[4px]!'
             case 'medium':
-                return 'text-[12.5px]'
+                return 'text-xs'
         }
     }, [size])
 
     return (
         <button
-            className={`inline-flex items-center justify-center gap-2 px-[14px] py-[7px] rounded-md border font-sans text-md cursor-pointer whitespace-nowrap leading-tight ${variantClass} ${sizeClass} ${className} disabled:opacity-50 disabled:cursor-not-allowed`}
+            className={`inline-flex items-center justify-center gap-2 px-[14px] py-[7px] rounded-md border font-sans cursor-pointer whitespace-nowrap leading-tight ${variantClass} ${sizeClass} ${className} disabled:opacity-50 disabled:cursor-not-allowed`}
             onClick={onClick}
             disabled={disabled}
             data-testid={testId}

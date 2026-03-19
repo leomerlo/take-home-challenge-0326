@@ -1,6 +1,25 @@
 @import "tailwindcss";
 @import "forms.css";
 
+@theme {
+  --text-2xs: 10px;
+  --text-2xs--line-height: 1.25;
+  --text-xs: 12px;
+  --text-xs--line-height: 1.25;
+  --text-sm: 14px;
+  --text-sm--line-height: 1.43;
+  --text-base: 16px;
+  --text-base--line-height: 1.5;
+  --text-lg: 18px;
+  --text-lg--line-height: 1.33;
+  --text-xl: 20px;
+  --text-xl--line-height: 1.4;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 1.33;
+  --text-3xl: 26px;
+  --text-3xl--line-height: 1.2;
+}
+
 :root {
   /* Background layers */
   --bg-root: #0a0c10;
@@ -128,5 +147,26 @@
 }
 
 body {
-  @apply font-sans bg-(--bg-root) text-[16px];
+  @apply font-sans bg-(--bg-root) text-base;
+}
+
+/* Indicator detail panel (was indicatorDetails.css — bundled here so @apply sees @theme) */
+.detail-section {
+  @apply flex flex-col gap-(--sp-2);
+}
+
+.detail-section-header {
+  @apply uppercase text-2xs text-(--text-tertiary);
+}
+
+.detail-row {
+  @apply flex justify-between items-center py-(--sp-2) border-b border-(--border-subtle);
+}
+
+.detail-row-label {
+  @apply text-xs text-(--text-secondary);
+}
+
+.detail-row-value {
+  @apply text-xs text-(--text-primary);
 }

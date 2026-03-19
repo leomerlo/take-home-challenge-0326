@@ -1,5 +1,3 @@
-import '@/styles/indicatorDetails.css';
-
 const IndicatorDetailsSkeleton = () => {
   return (
     <aside className="overflow-hidden shrink-0 w-(--detail-width) shadow-(--shadow-elevated) h-full z-60">

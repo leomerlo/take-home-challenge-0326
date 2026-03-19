@@ -28,10 +28,10 @@ const IndicatorsDataTable = (props: Props) => {
   const cellSlots = useMemo(
     () => ({
       value: (row: Indicator) => (
-        <span className={`text-(--augur-blue) font-mono truncate word-break-break-all ${row.type === 'hash' ? 'text-[11px]' : ''}`}>{row.value}</span>
+        <span className={`text-(--augur-blue) font-mono truncate word-break-break-all ${row.type === 'hash' ? 'text-xs' : ''}`}>{row.value}</span>
       ),
       type: (row: Indicator) => (
-        <div className="flex items-center gap-1 text-[11px] font-semibold uppercase text-(--text-secondary) tracking-[.5px]">
+        <div className="flex items-center gap-1 text-xs font-semibold uppercase text-(--text-secondary) tracking-[.5px]">
           <span className="text-(--text-secondary)">{TYPE_ICONS[row.type] ?? '•'} {t(`indicators.table.type.${row.type}`)}</span>
         </div>
       ),
@@ -62,7 +62,7 @@ const IndicatorsDataTable = (props: Props) => {
         </div>
       ),
       lastSeen: (row: Indicator) => (
-        <span className="text-[11px] text-(--text-tertiary)">{formatTimeAgo(row.lastSeen)}</span>
+        <span className="text-xs text-(--text-tertiary)">{formatTimeAgo(row.lastSeen)}</span>
       ),
     }),
     [t]

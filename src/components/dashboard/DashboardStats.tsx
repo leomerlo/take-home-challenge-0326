@@ -30,7 +30,7 @@ const DashboardStats = () => {
     return (
       <div className="grid grid-cols-5 gap-(--sp-4)">
         <div className="col-span-5 flex flex-col items-center justify-center py-(--sp-12) px-(--sp-8) rounded-lg bg-(--bg-card) border border-(--border-subtle)">
-          <p className="text-(--text-secondary) text-[12px]">{t('dashboard.stats.empty')}</p>
+          <p className="text-(--text-secondary) text-xs">{t('dashboard.stats.empty')}</p>
         </div>
       </div>
     )
@@ -44,7 +44,7 @@ const DashboardStats = () => {
                 title={t(`dashboard.stats.total_indicators`)}
                 icon={<Shield size={24} />}
                 description={
-                    <div className="flex items-center gap-1 text-[11px] text-(--text-tertiary)">
+                    <div className="flex items-center gap-1 text-xs text-(--text-tertiary)">
                         <ArrowUp size={12} />
                         {t(`dashboard.stats.total_indicators_description`, { percentage: 12 })}
                     </div>
