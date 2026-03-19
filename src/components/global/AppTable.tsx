@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export type TableHeading<T = object> = {
   key: keyof T | string
@@ -22,9 +23,12 @@ export type AppTableProps<T extends object> = {
   cellSlots?: Partial<Record<string, (row: T, index: number) => React.ReactNode>>
   onRowClick?: (row: T, index: number) => void
   className?: string
+  ariaLabelSelectAll?: string
+  ariaLabelSelectRow?: (index: number) => string
 }
 
 const AppTable = <T extends object>(props: AppTableProps<T>) => {
+  const { t } = useTranslation()
   const {
     headings,
     data,
@@ -39,6 +43,8 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
     cellSlots = {},
     onRowClick,
     className = '',
+    ariaLabelSelectAll = t('global.select_all'),
+    ariaLabelSelectRow = (index: number) => t('global.select_row', { index: index + 1 }),
   } = props
   
   const [internalSelected, setInternalSelected] = useState<Set<string>>(new Set())
@@ -108,13 +114,14 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
         <thead>
           <tr className="border-b border-(--border-subtle) bg-(--bg-elevated)">
           {selectable && (
-            <th className="w-10 px-(--sp-4) py-(--sp-3)">
+            <th className="w-10 px-(--sp-4) py-(--sp-3)" scope="col">
               <label className="flex cursor-pointer items-center justify-center">
               <input
                 ref={selectAllRef}
                 type="checkbox"
                 checked={allSelected}
                 onChange={toggleAllSelection}
+                aria-label={ariaLabelSelectAll}
                 className="h-4 w-4 rounded border-(--border-default) bg-(--bg-input) text-(--augur-blue) focus:ring-(--augur-blue) focus:ring-offset-0"
               />
               </label>
@@ -125,9 +132,19 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
             const customHeading = headingSlots[key]
             const isActive = sortKey === key
             
+            const ariaSort: 'ascending' | 'descending' | 'none' | undefined = h.sortable
+              ? isActive
+                ? sortOrder === 'asc'
+                  ? 'ascending'
+                  : 'descending'
+                : 'none'
+              : undefined
+
             return (
               <th
                 key={key}
+                scope="col"
+                {...(ariaSort && { 'aria-sort': ariaSort })}
                 className={`px-(--sp-4) py-(--sp-3) font-semibold text-(--text-tertiary) uppercase text-[10.5px] tracking-[.8px] ${
                   h.sortable ? 'cursor-pointer select-none hover:text-(--text-primary)' : ''
                 }`}
@@ -165,15 +182,26 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
           const isSelected = selectedKeys.has(id)
           const isClickable = !!onRowClick
           
+          const handleRowKeyDown = (e: React.KeyboardEvent) => {
+            if (e.target instanceof HTMLInputElement && e.target.type === 'checkbox') return
+            if (isClickable && (e.key === 'Enter' || e.key === ' ')) {
+              e.preventDefault()
+              handleRowClick(row, index)
+            }
+          }
+
           return (
             <tr
               key={id}
+              role={isClickable ? 'button' : undefined}
+              tabIndex={isClickable ? 0 : undefined}
               className={`border-b border-(--border-subtle) last:border-b-0 duration-150 ease transition-colors ${
                 isClickable
                 ? 'cursor-pointer hover:bg-(--bg-card-hover)'
                 : 'hover:bg-(--bg-elevated)'
               } ${isSelected ? 'bg-(--augur-blue-dim)' : ''}`}
               onClick={() => handleRowClick(row, index)}
+              onKeyDown={handleRowKeyDown}
             >
             {selectable && (
               <td
@@ -185,6 +213,7 @@ const AppTable = <T extends object>(props: AppTableProps<T>) => {
                 type="checkbox"
                 checked={isSelected}
                 onChange={() => toggleRowSelection(id)}
+                aria-label={ariaLabelSelectRow(index)}
                 className="h-4 w-4 rounded border-(--border-default) bg-(--bg-input) text-(--augur-blue) focus:ring-(--augur-blue) focus:ring-offset-0"
                 />
                 </label>

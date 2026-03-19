@@ -39,7 +39,12 @@
         "pagination": {
             "total": "Showing {{initial}}-{{end}} of {{total}} {{elements}}"
         },
-        "indicators": "indicators"
+        "indicators": "indicators",
+        "select_all": "Select all",
+        "select_row": "Select row {{index}}",
+        "sort_asc": "ascending",
+        "sort_desc": "descending",
+        "sort_none": "none"
     },
     "indicators": {
         "filters": {
@@ -67,6 +72,8 @@
             "clear": "Clear filters"
         },
         "table": {
+            "select_all": "Select all rows",
+            "select_row": "Select row {{index}}",
             "headings": {
                 "value": "Indicators",
                 "type": "Type",

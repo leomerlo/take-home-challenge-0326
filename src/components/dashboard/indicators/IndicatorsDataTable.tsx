@@ -80,6 +80,8 @@ const IndicatorsDataTable = (props: Props) => {
   return (
     <div className="w-full">
       <AppTable
+        ariaLabelSelectAll={t('indicators.table.select_all')}
+        ariaLabelSelectRow={(index) => t('indicators.table.select_row', { index: index + 1 })}
         headings={[
           { key: 'value', label: t('indicators.table.headings.value'), sortable: true },
           { key: 'type', label: t('indicators.table.headings.type'), width: '100px' },
