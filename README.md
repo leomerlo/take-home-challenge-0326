@@ -103,3 +103,4 @@ npm test          # Run tests
 4. On branch `design-system-update`, I reviewed the design system and unified typography tokens (CSS variables / design tokens) so font sizes, weights, and line heights are standardized across the UI.
 5. There is an accessibility issue in the way the table is shown, since the full row is interactive the checkbox component inside can fail to be announced by screen readers. My suggestion would be to make only the name of the indicator clickable, or have the selectable prop disable the full row interactivity.
 6. The current design has a couple issues with contrast ratios theshold that are not met. (Navigation and Stat cards, Table titles, Primary buttons)
+7. Added i18n support and Spanish language
