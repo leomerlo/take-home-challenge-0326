@@ -106,6 +106,7 @@
                 "medium": "Medio",
                 "low": "Bajo"
             },
+            "confidence": "Puntuación de confianza del indicador {{value}}",
             "error": "Hubo un error al obtener los indicadores, por favor inténtalo de nuevo."
         },
         "details": {

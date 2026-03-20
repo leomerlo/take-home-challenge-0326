@@ -5,10 +5,11 @@ export type AppConfidenceBarVariant = 'critical' | 'high' | 'medium' | 'low'
 type Props = {
     confidence: number
     variant: AppConfidenceBarVariant
+    label: string
 }
 
 const AppConfidenceBar = (props: Props) => {
-    const { confidence, variant } = props
+    const { confidence, label, variant } = props
 
     /**
      * Generate the variant classes based on the variant prop
@@ -46,7 +47,7 @@ const AppConfidenceBar = (props: Props) => {
     return (
         <div className="flex gap-2 items-center">
             <div className={`w-full h-[4px] rounded-sm bg-(--bg-elevated)`}>
-                <div className={`h-full rounded-sm ${fillClass}`} style={{ width: `${confidence}%` }} aria-valuenow={confidence} aria-valuemin={0} aria-valuemax={100} role="progressbar"></div>
+                <div className={`h-full rounded-sm ${fillClass}`} style={{ width: `${confidence}%` }} aria-valuenow={confidence} aria-valuemin={0} aria-valuemax={100} role="progressbar" aria-label={label}></div>
             </div>
             <span className={`text-[11px] font-bold ${textClass}`}>{confidence}</span>
         </div>

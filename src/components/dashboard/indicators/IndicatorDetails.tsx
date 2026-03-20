@@ -51,11 +51,14 @@ const IndicatorDetails = (props: Props) => {
             : `overflow-hidden shrink-0 transition-[width] relative ${isOpen ? 'w-(--detail-width)' : 'w-0'}`
           }
         `}
+        aria-hidden={!isOpen && isMobile ? true : undefined}
+        aria-label={t('indicators.details.title')}
+        tabIndex={!isOpen && isMobile ? -1 : undefined}
       >
         <div className={`absolute top-0 left-0 border-l border-(--border-subtle) bg-(--bg-surface) h-full w-full lg:w-(--detail-width)`}>
           <div className="flex flex-col w-full h-full">
             <div className="sticky py-(--sp-4) px-(--sp-5) border-b border-(--border-subtle) flex justify-between items-center">
-              <h3 className="text-[14px] font-semibold text-white">{t('indicators.details.title')}</h3>
+              <h1 className="text-[14px] font-semibold text-white">{t('indicators.details.title')}</h1>
               <AppButton
                 variant="ghost"
                 onClick={handleClose}

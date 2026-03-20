@@ -1,10 +1,14 @@
 # Augur Security — Threat Intelligence Dashboard
 
-> Frontend Engineering Take-Home Assignment
+> Frontend Engineering Take-Home Assignment - Leandro Merlo - merloleandro@gmail.com
 
 ## Overview
 
 **Threat Intelligence Dashboard** displays, filters, and explores threat indicators (malicious IPs, domains, file hashes, URLs).
+
+## Git repo
+
+https://github.com/leomerlo/take-home-challenge-0326
 
 ## Quick Start
 
@@ -89,8 +93,6 @@ Base URL: `http://localhost:3001` (proxied to `/api` in dev)
 npm test          # Run tests
 ```
 
-The project includes Vitest + React Testing Library. Write tests for your key components and hooks.
-
 ---
 
 ### Candidate Notes
@@ -98,3 +100,4 @@ The project includes Vitest + React Testing Library. Write tests for your key co
 1. In case the current design system is using CSS vars, I opted out of moving the values into tailwind's theme and used the vars with tailwinds.
 2. I used TanStack Query for data fetching to bring this assignment closer to a production-ready implementation, with caching and robust loading/error handling.
 3. Added sorting on the server side, even though the mock only showed filtering on Indicator and Last Seen, it seemed prudent to create the feature for all columns.
+4. On branch `design-system-update`, I reviewed the design system and unified typography tokens (CSS variables / design tokens) so font sizes, weights, and line heights are standardized across the UI.

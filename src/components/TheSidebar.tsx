@@ -137,8 +137,10 @@ const TheSidebar = () => {
             </button>
             <aside
                 ref={asideRef}
-                aria-hidden={!isOpen}
+                aria-hidden={!isOpen && isMobile ? true : undefined}
                 {...(isOpen && isMobile && { 'aria-modal': true, role: 'dialog', 'aria-label': t('navigation.menu') })}
+                tabIndex={!isOpen && isMobile ? -1 : undefined}
+                aria-label={t('navigation.menu')}
                 className={`
                     flex flex-col bg-(--bg-sidebar) border-r border-(--border-subtle) py-(--sp-5) overflow-y-auto
                     lg:static lg:block lg:w-(--sidebar-width) lg:shrink-0 lg:h-screen

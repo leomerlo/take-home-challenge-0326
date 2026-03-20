@@ -106,6 +106,7 @@
                 "medium": "Medium",
                 "low": "Low"
             },
+            "confidence": "Confidence score for indicator {{value}}",
             "error": "There was an error fetching the indicators, please try again."
         },
         "details": {

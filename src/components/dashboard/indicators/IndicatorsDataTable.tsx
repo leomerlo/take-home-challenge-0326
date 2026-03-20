@@ -46,6 +46,7 @@ const IndicatorsDataTable = (props: Props) => {
         <AppConfidenceBar
           confidence={row.confidence}
           variant={row.severity}
+          label={t('indicators.table.confidence', { value: row.value })}
         />
       ),
       tags: (row: Indicator) => (
