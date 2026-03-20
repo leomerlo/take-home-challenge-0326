@@ -102,5 +102,5 @@ npm test          # Run tests
 3. Added sorting on the server side, even though the mock only showed filtering on Indicator and Last Seen, it seemed prudent to create the feature for all columns.
 4. On branch `design-system-update`, I reviewed the design system and unified typography tokens (CSS variables / design tokens) so font sizes, weights, and line heights are standardized across the UI.
 5. There is an accessibility issue in the way the table is shown, since the full row is interactive the checkbox component inside can fail to be announced by screen readers. My suggestion would be to make only the name of the indicator clickable, or have the selectable prop disable the full row interactivity.
-6. The current design has a couple issues with contrast ratios theshold that are not met. (Navigation and Stat cards, Table titles, Primary buttons)
+6. Updated tertiary text to meet WCAG ratio contrast guidelines. The primary button still fails, but the main color is the brand color. I would suggest talking to the design team to reach an understanding as to how this can be fixed.
 7. Added i18n support and Spanish language
