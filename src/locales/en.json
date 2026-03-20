@@ -22,6 +22,10 @@
         "menu": "Navigation menu"
     },
     "dashboard": {
+        "title": "Dashboard",
+        "description": "Monitor the status of your threat indicators.",
+        "export": "Export",
+        "add_indicator": "Add indicator",
         "stats": {
             "total_indicators": "Total Indicators",
             "critical": "Critical",

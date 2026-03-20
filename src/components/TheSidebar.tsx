@@ -176,7 +176,7 @@ const TheSidebar = () => {
                         onClick={() => i18n.changeLanguage('es')}
                         disabled={i18n.language === 'es'}
                     >
-                        Spanish
+                        Español
                     </AppButton>
                 </div>
             </aside>

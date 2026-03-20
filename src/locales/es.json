@@ -22,6 +22,10 @@
         "menu": "Menú de navegación"
     },
     "dashboard": {
+        "title": "Panel de control",
+        "description": "Supervisa el estado de tus indicadores de amenazas.",
+        "export": "Exportar",
+        "add_indicator": "Agregar indicador",
         "stats": {
             "total_indicators": "Indicadores totales",
             "critical": "Crítico",
