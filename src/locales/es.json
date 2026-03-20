@@ -55,7 +55,8 @@
         "select_row": "Seleccionar fila {{index}}",
         "sort_asc": "ascendente",
         "sort_desc": "descendente",
-        "sort_none": "ninguno"
+        "sort_none": "ninguno",
+        "close": "Cerrar"
     },
     "indicators": {
         "filters": {

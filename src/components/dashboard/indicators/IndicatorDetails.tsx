@@ -62,6 +62,7 @@ const IndicatorDetails = (props: Props) => {
               <AppButton
                 variant="ghost"
                 onClick={handleClose}
+                aria-label={t('global.close')}
               >
                 <X size={16} />
               </AppButton>
