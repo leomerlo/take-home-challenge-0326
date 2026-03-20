@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import type { IndicatorFilters } from '@/types/indicator';
-import { fetchIndicators } from '@/services/indicators';
+import { fetchIndicators } from '@/api/indicators';
 
 export function useIndicators(filters: IndicatorFilters = {}) {
   const query = useQuery({

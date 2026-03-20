@@ -6,9 +6,6 @@
 
 **Threat Intelligence Dashboard** displays, filters, and explores threat indicators (malicious IPs, domains, file hashes, URLs).
 
-## See it in action
-Visit [link] to see it in action
-
 ## Quick Start
 
 ```bash
@@ -86,31 +83,13 @@ Base URL: `http://localhost:3001` (proxied to `/api` in dev)
 └── vitest.config.ts
 ```
 
-## What To Build
-
-Refer to the assignment document for full requirements. In short:
-
-1. **Dashboard layout** — Sidebar navigation, page header, stats row, data table, detail panel
-2. **Data table** — Fetch and display indicators with sorting by column
-3. **Filtering** — Search input + severity/type/source dropdowns
-4. **Detail panel** — Click a row to show full indicator details in a side panel
-5. **State management** — Loading, error, and empty states
-6. **Pagination** — Navigate through the full dataset
-
 ## Testing
 
 ```bash
 npm test          # Run tests
-npm run test:ui   # Run with Vitest UI
 ```
 
 The project includes Vitest + React Testing Library. Write tests for your key components and hooks.
-
-## Submission
-
-1. Ensure `npm install && npm run dev` works cleanly
-2. Ensure `npm test` passes
-3. Add your notes below, then zip the project (excluding `node_modules`)
 
 ---
 
